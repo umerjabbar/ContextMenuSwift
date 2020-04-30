@@ -38,7 +38,7 @@ struct MyMenuItemWithImage: MyMenuItem {
 extension UIView {
     
     func showMenu(wind: UIWindow, items: [MyMenuItem], actionHandler: ((_ index: Int, _ item: MyMenuItem) -> Void)?){
-        let cust = MyMenuView(viewTargeted: self, window: wind)
+        let cust = ContextMenuSwift(viewTargeted: self, window: wind)
         cust.items = items
         cust.responseHandler = { index, item in
             actionHandler?(index, item)
@@ -48,7 +48,7 @@ extension UIView {
     
     func showMenu(items: [MyMenuItem], actionHandler: ((_ index: Int, _ item: MyMenuItem) -> Void)?){
         if let wind = UIApplication.shared.keyWindow {
-            let cust = MyMenuView(viewTargeted: self, window: wind)
+            let cust = ContextMenuSwift(viewTargeted: self, window: wind)
             cust.items = items
             cust.responseHandler = { index, item in
                 actionHandler?(index, item)
@@ -81,7 +81,7 @@ struct MenuConstants {
     
 }
 
-class MyMenuView {
+class ContextMenuSwift {
     
     var mainViewRect : CGRect
     

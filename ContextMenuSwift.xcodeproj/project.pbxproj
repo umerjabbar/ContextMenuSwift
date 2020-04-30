@@ -17,7 +17,7 @@
 		981075E7245B8A81002986B9 /* ContextMenuSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 981075E6245B8A81002986B9 /* ContextMenuSwift.podspec */; };
 		981075E9245B8A8B002986B9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 981075E8245B8A8B002986B9 /* README.md */; };
 		98A63369245B816C003D3B8E /* ContextMenuSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 98A63367245B816C003D3B8E /* ContextMenuSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98A63371245B81CF003D3B8E /* MyMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A63370245B81CF003D3B8E /* MyMenuView.swift */; };
+		98A63371245B81CF003D3B8E /* ContextMenuSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A63370245B81CF003D3B8E /* ContextMenuSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		98A63364245B816C003D3B8E /* ContextMenuSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContextMenuSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A63367245B816C003D3B8E /* ContextMenuSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContextMenuSwift.h; sourceTree = "<group>"; };
 		98A63368245B816C003D3B8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98A63370245B81CF003D3B8E /* MyMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuView.swift; sourceTree = "<group>"; };
+		98A63370245B81CF003D3B8E /* ContextMenuSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 		98A6336F245B81B8003D3B8E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				98A63370245B81CF003D3B8E /* MyMenuView.swift */,
+				98A63370245B81CF003D3B8E /* ContextMenuSwift.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				981075CD245B86FE002986B9 /* ContextMenuSwift.framework in Sources */,
-				98A63371245B81CF003D3B8E /* MyMenuView.swift in Sources */,
+				98A63371245B81CF003D3B8E /* ContextMenuSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
