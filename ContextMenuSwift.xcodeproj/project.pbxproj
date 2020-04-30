@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981075CD245B86FE002986B9 /* ContextMenuSwift.framework in Sources */ = {isa = PBXBuildFile; fileRef = 98A63364245B816C003D3B8E /* ContextMenuSwift.framework */; };
+		981075D5245B87D5002986B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981075D4245B87D5002986B9 /* AppDelegate.swift */; };
+		981075D7245B87D5002986B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981075D6245B87D5002986B9 /* SceneDelegate.swift */; };
+		981075D9245B87D5002986B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981075D8245B87D5002986B9 /* ViewController.swift */; };
+		981075DC245B87D5002986B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 981075DA245B87D5002986B9 /* Main.storyboard */; };
+		981075DE245B87D5002986B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 981075DD245B87D5002986B9 /* Assets.xcassets */; };
+		981075E1245B87D5002986B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 981075DF245B87D5002986B9 /* LaunchScreen.storyboard */; };
 		98A63369245B816C003D3B8E /* ContextMenuSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 98A63367245B816C003D3B8E /* ContextMenuSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98A63371245B81CF003D3B8E /* MyMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A63370245B81CF003D3B8E /* MyMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981075D2245B87D5002986B9 /* ContextMenuSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContextMenuSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		981075D4245B87D5002986B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		981075D6245B87D5002986B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		981075D8245B87D5002986B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		981075DB245B87D5002986B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		981075DD245B87D5002986B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		981075E0245B87D5002986B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		981075E2245B87D5002986B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98A63364245B816C003D3B8E /* ContextMenuSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContextMenuSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A63367245B816C003D3B8E /* ContextMenuSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContextMenuSwift.h; sourceTree = "<group>"; };
 		98A63368245B816C003D3B8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -19,6 +34,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		981075CF245B87D5002986B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98A63361245B816C003D3B8E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +51,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		981075D3245B87D5002986B9 /* ContextMenuSwiftDemo */ = {
+			isa = PBXGroup;
+			children = (
+				981075D4245B87D5002986B9 /* AppDelegate.swift */,
+				981075D6245B87D5002986B9 /* SceneDelegate.swift */,
+				981075D8245B87D5002986B9 /* ViewController.swift */,
+				981075DA245B87D5002986B9 /* Main.storyboard */,
+				981075DD245B87D5002986B9 /* Assets.xcassets */,
+				981075DF245B87D5002986B9 /* LaunchScreen.storyboard */,
+				981075E2245B87D5002986B9 /* Info.plist */,
+			);
+			path = ContextMenuSwiftDemo;
+			sourceTree = "<group>";
+		};
 		98A6335A245B816C003D3B8E = {
 			isa = PBXGroup;
 			children = (
 				98A63366245B816C003D3B8E /* ContextMenuSwift */,
+				981075D3245B87D5002986B9 /* ContextMenuSwiftDemo */,
 				98A63365245B816C003D3B8E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				98A63364245B816C003D3B8E /* ContextMenuSwift.framework */,
+				981075D2245B87D5002986B9 /* ContextMenuSwiftDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,6 +115,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		981075D1245B87D5002986B9 /* ContextMenuSwiftDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 981075E5245B87D5002986B9 /* Build configuration list for PBXNativeTarget "ContextMenuSwiftDemo" */;
+			buildPhases = (
+				981075CE245B87D5002986B9 /* Sources */,
+				981075CF245B87D5002986B9 /* Frameworks */,
+				981075D0245B87D5002986B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContextMenuSwiftDemo;
+			productName = ContextMenuSwiftDemo;
+			productReference = 981075D2245B87D5002986B9 /* ContextMenuSwiftDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		98A63363245B816C003D3B8E /* ContextMenuSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98A6336C245B816C003D3B8E /* Build configuration list for PBXNativeTarget "ContextMenuSwift" */;
@@ -101,9 +156,13 @@
 		98A6335B245B816C003D3B8E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Umer jabbar";
 				TargetAttributes = {
+					981075D1245B87D5002986B9 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					98A63363245B816C003D3B8E = {
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1140;
@@ -124,11 +183,22 @@
 			projectRoot = "";
 			targets = (
 				98A63363245B816C003D3B8E /* ContextMenuSwift */,
+				981075D1245B87D5002986B9 /* ContextMenuSwiftDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		981075D0245B87D5002986B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				981075E1245B87D5002986B9 /* LaunchScreen.storyboard in Resources */,
+				981075DE245B87D5002986B9 /* Assets.xcassets in Resources */,
+				981075DC245B87D5002986B9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98A63362245B816C003D3B8E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,17 +209,83 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		981075CE245B87D5002986B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				981075D9245B87D5002986B9 /* ViewController.swift in Sources */,
+				981075D5245B87D5002986B9 /* AppDelegate.swift in Sources */,
+				981075D7245B87D5002986B9 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98A63360245B816C003D3B8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				981075CD245B86FE002986B9 /* ContextMenuSwift.framework in Sources */,
 				98A63371245B81CF003D3B8E /* MyMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		981075DA245B87D5002986B9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				981075DB245B87D5002986B9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		981075DF245B87D5002986B9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				981075E0245B87D5002986B9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		981075E3245B87D5002986B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LM67982NF5;
+				INFOPLIST_FILE = ContextMenuSwiftDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.umerjabbar.ContextMenuSwiftDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		981075E4245B87D5002986B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LM67982NF5;
+				INFOPLIST_FILE = ContextMenuSwiftDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.umerjabbar.ContextMenuSwiftDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		98A6336A245B816C003D3B8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -291,6 +427,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.umerjabbar.ContextMenuSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -318,6 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.umerjabbar.ContextMenuSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -326,6 +464,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		981075E5245B87D5002986B9 /* Build configuration list for PBXNativeTarget "ContextMenuSwiftDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				981075E3245B87D5002986B9 /* Debug */,
+				981075E4245B87D5002986B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		98A6335E245B816C003D3B8E /* Build configuration list for PBXProject "ContextMenuSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
