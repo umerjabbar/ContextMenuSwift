@@ -106,6 +106,16 @@ class ContextMenuSwift {
     
     var placeHolderView : UIView?
     
+    var tvH : CGFloat = 0.0
+    var tvW : CGFloat = 0.0
+    var tvY : CGFloat = 0.0
+    var tvX : CGFloat = 0.0
+    var mH : CGFloat = 0.0
+    var mW : CGFloat = 0.0
+    var mY : CGFloat = 0.0
+    var mX : CGFloat = 0.0
+    
+    
     init(viewTargeted: UIView, window: UIWindow) {
         self.viewTargeted = viewTargeted
         self.window = window
@@ -351,15 +361,14 @@ class ContextMenuSwift {
         
         let targetedImagePosition = getZoomedTargetedSize()
         
-        let tvH = targetedImagePosition.height
-        let tvW = targetedImagePosition.width
-        var tvY = targetedImagePosition.origin.y
-        var tvX = targetedImagePosition.origin.x
-        
-        var mH = menuHeight
-        let mW = MenuConstants.MenuWidth
-        var mY = tvY + MenuConstants.MenuMarginSpace
-        var mX = MenuConstants.HorizontalMarginSpace
+        tvH = targetedImagePosition.height
+        tvW = targetedImagePosition.width
+        tvY = targetedImagePosition.origin.y
+        tvX = targetedImagePosition.origin.x
+        mH = menuHeight
+        mW = MenuConstants.MenuWidth
+        mY = tvY + MenuConstants.MenuMarginSpace
+        mX = MenuConstants.HorizontalMarginSpace
         
         if tvY > mainViewRect.height - MenuConstants.BottomMarginSpace - tvH {
             tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
@@ -432,15 +441,15 @@ class ContextMenuSwift {
             
             self.menuView.alpha = 1
             self.menuView.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1).translatedBy(x: 0, y: 0)
-            self.menuView.frame = CGRect(x: mX,
-                                         y: mY,
-                                         width: mW,
-                                         height: mH)
+            self.menuView.frame = CGRect(x: self.mX,
+                                         y: self.mY,
+                                         width: self.mW,
+                                         height: self.mH)
             
-            self.targetedImageView.frame = CGRect(x: tvX,
-                                                  y: tvY,
-                                                  width: tvW,
-                                                  height: tvH)
+            self.targetedImageView.frame = CGRect(x: self.tvX,
+                                                  y: self.tvY,
+                                                  width: self.tvW,
+                                                  height: self.tvH)
             
         })
         
