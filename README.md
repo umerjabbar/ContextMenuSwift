@@ -35,8 +35,6 @@ class MyContentViewController: UIViewController {
 }
 ```
 
-<img src="/images/basic.png" />
-
 ## Customizations
 
 ### Display from a Source View
@@ -66,7 +64,6 @@ ContextMenu.shared.show(
 )
 ```
 
-<img src="/images/blue.png" />
 
 There's plenty more you can customize with `ContextMenu.ContainerStyle`:
 
@@ -76,9 +73,3 @@ There's plenty more you can customize with `ContextMenu.ContainerStyle`:
 - `overlayColor`: The color of the background
 - `motionEffect`: Respond to device gyroscope changes, similar to app icons on Springboard.app.
 
-If you want more customizations, we will gladly accept a Pull Request!
-
-## Acknowledgements
-
-- Inspiration from [Things 3](https://culturedcode.com/things/)
-- Created with ❤️ by [Ryan Nystrom](https://twitter.com/_ryannystrom)
