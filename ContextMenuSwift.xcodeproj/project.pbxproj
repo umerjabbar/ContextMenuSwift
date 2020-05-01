@@ -16,9 +16,35 @@
 		981075E1245B87D5002986B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 981075DF245B87D5002986B9 /* LaunchScreen.storyboard */; };
 		981075EC245B9F19002986B9 /* ContextMenuSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 981075EA245B9F19002986B9 /* ContextMenuSwift.podspec */; };
 		981075ED245B9F19002986B9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 981075EB245B9F19002986B9 /* README.md */; };
+		98A3EA18245C7C3B00914AC6 /* ContextMenuSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A63364245B816C003D3B8E /* ContextMenuSwift.framework */; };
+		98A3EA19245C7C3B00914AC6 /* ContextMenuSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 98A63364245B816C003D3B8E /* ContextMenuSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		98A63369245B816C003D3B8E /* ContextMenuSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 98A63367245B816C003D3B8E /* ContextMenuSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98A63371245B81CF003D3B8E /* ContextMenuSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A63370245B81CF003D3B8E /* ContextMenuSwift.swift */; };
+		98A63371245B81CF003D3B8E /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A63370245B81CF003D3B8E /* ContextMenu.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98A3EA1A245C7C3B00914AC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98A6335B245B816C003D3B8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98A63363245B816C003D3B8E;
+			remoteInfo = ContextMenuSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		98A3EA1C245C7C3B00914AC6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				98A3EA19245C7C3B00914AC6 /* ContextMenuSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		981075D2245B87D5002986B9 /* ContextMenuSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContextMenuSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +60,7 @@
 		98A63364245B816C003D3B8E /* ContextMenuSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContextMenuSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A63367245B816C003D3B8E /* ContextMenuSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContextMenuSwift.h; sourceTree = "<group>"; };
 		98A63368245B816C003D3B8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98A63370245B81CF003D3B8E /* ContextMenuSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuSwift.swift; sourceTree = "<group>"; };
+		98A63370245B81CF003D3B8E /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A3EA18245C7C3B00914AC6 /* ContextMenuSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +96,13 @@
 			path = ContextMenuSwiftDemo;
 			sourceTree = "<group>";
 		};
+		98A3EA17245C7C3B00914AC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		98A6335A245B816C003D3B8E = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +111,7 @@
 				98A63366245B816C003D3B8E /* ContextMenuSwift */,
 				981075D3245B87D5002986B9 /* ContextMenuSwiftDemo */,
 				98A63365245B816C003D3B8E /* Products */,
+				98A3EA17245C7C3B00914AC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,7 +127,7 @@
 		98A63366245B816C003D3B8E /* ContextMenuSwift */ = {
 			isa = PBXGroup;
 			children = (
-				98A63370245B81CF003D3B8E /* ContextMenuSwift.swift */,
+				98A63370245B81CF003D3B8E /* ContextMenu.swift */,
 				98A63367245B816C003D3B8E /* ContextMenuSwift.h */,
 				98A63368245B816C003D3B8E /* Info.plist */,
 			);
@@ -120,10 +155,12 @@
 				981075CE245B87D5002986B9 /* Sources */,
 				981075CF245B87D5002986B9 /* Frameworks */,
 				981075D0245B87D5002986B9 /* Resources */,
+				98A3EA1C245C7C3B00914AC6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				98A3EA1B245C7C3B00914AC6 /* PBXTargetDependency */,
 			);
 			name = ContextMenuSwiftDemo;
 			productName = ContextMenuSwiftDemo;
@@ -224,11 +261,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				981075CD245B86FE002986B9 /* ContextMenuSwift.framework in Sources */,
-				98A63371245B81CF003D3B8E /* ContextMenuSwift.swift in Sources */,
+				98A63371245B81CF003D3B8E /* ContextMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98A3EA1B245C7C3B00914AC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98A63363245B816C003D3B8E /* ContextMenuSwift */;
+			targetProxy = 98A3EA1A245C7C3B00914AC6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		981075DA245B87D5002986B9 /* Main.storyboard */ = {
