@@ -32,7 +32,7 @@ extension String : MyMenuItem {
 }
 struct MyMenuItemWithImage: MyMenuItem {
     var title: String
-    var image: UIImage? = nil
+    var image: UIImage?
 }
 
 extension UIView {
@@ -64,7 +64,7 @@ struct MenuConstants {
     static var MenuDefaultHeight : CGFloat = 120
     static var MenuWidth : CGFloat = 250
     static var MenuMarginSpace : CGFloat = 20
-    static var TopMarginSpace : CGFloat = 64
+    static var TopMarginSpace : CGFloat = 30
     static var BottomMarginSpace : CGFloat = 20
     static var HorizontalMarginSpace : CGFloat = 20
     static var ItemDefaultHeight : CGFloat = 44
