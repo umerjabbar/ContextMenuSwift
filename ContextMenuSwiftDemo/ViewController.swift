@@ -17,20 +17,30 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var canvas: UIView!
     
-    var menu1 : ContextMenu?
-    var menu2 : ContextMenu?
-    var menu3 : ContextMenu?
+    lazy var menu1 : ContextMenu? = cv1.getContextMenu()
+    lazy var menu2 : ContextMenu? = cv2.getContextMenu()
+    lazy var menu3 : ContextMenu? = cv3.getContextMenu()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let window = UIApplication.shared.windows.first else{return}
-        menu1 = ContextMenu(viewTargeted: cv1, window: window)
+//        guard let window = UIApplication.shared.windows.first else{return}
+//        menu1 = ContextMenu(viewTargeted: cv1, window: window)
 //        menu1?.addTapInteraction()
-        menu2 = ContextMenu(viewTargeted: cv2, window: window)
-        menu2?.addTapInteraction()
+//        menu2 = ContextMenu(viewTargeted: cv2, window: window)
+//        menu2?.addTapInteraction()
+//        menu3 = ContextMenu(viewTargeted: cv3, window: self.canvas)
+//        menu3?.addTapInteraction()
         
-        menu3 = ContextMenu(viewTargeted: cv3, window: self.canvas)
+        example1()
+    }
+    
+    func example1(){
+//        menu1 = cv1.getContextMenu()
+        menu1?.addTapInteraction()
+//        menu2 = cv2.getContextMenu()
+        menu2?.addTapInteraction()
+//        menu3 = cv3.getContextMenu(window: self.canvas)
         menu3?.addTapInteraction()
     }
 

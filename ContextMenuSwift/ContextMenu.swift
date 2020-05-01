@@ -56,6 +56,10 @@ extension UIView {
         }
     }
     
+    public func getContextMenu(window: UIView? = nil) -> ContextMenu?{
+        return ContextMenu(viewTargeted: self, window: window)
+    }
+    
 }
 
 public struct ContextMenuConstants {
@@ -119,13 +123,14 @@ public class ContextMenu {
     var mY : CGFloat = 0.0
     var mX : CGFloat = 0.0
     
-    public init?(viewTargeted: UIView) {
-        if let wind = UIApplication.shared.windows.first {
+    public init?(viewTargeted: UIView, window: UIView? = nil) {
+        if let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow {
             self.customView = wind
             self.viewTargeted = viewTargeted
             self.mainViewRect = self.customView.frame
+        }else{
+            return nil
         }
-        return nil
     }
     
     public init(viewTargeted: UIView, window: UIView) {
@@ -158,9 +163,10 @@ public class ContextMenu {
         }
     }
     
-    public func showMenu(){
-        if !items.isEmpty {
-            self.menuHeight = CGFloat(items.count) * MenuConstants.ItemDefaultHeight + CGFloat(items.count - 1)
+    public func showMenu(items: [ContextMenuItem] = []){
+        self.items = items
+        if !self.items.isEmpty {
+            self.menuHeight = CGFloat(self.items.count) * MenuConstants.ItemDefaultHeight + CGFloat(self.items.count - 1)
         }else{
             self.menuHeight = MenuConstants.MenuDefaultHeight
         }
@@ -179,6 +185,8 @@ public class ContextMenu {
             }else{
                 self.menuHeight = self.MenuConstants.MenuDefaultHeight
             }
+            self.addBlurEffectView()
+            self.addTargetedImageView()
             self.addMenuView()
             self.updateTargetedImageViewPosition()
         }
