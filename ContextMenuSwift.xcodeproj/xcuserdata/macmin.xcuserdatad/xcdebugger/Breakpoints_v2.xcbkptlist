@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7CDD76FD-7D64-456D-B737-C29D061340E6"
+            uuid = "FFBE92DC-4943-4C9E-A585-917503F14662"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ContextMenuSwift/ContextMenu.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
-            landmarkName = "getZoomedTargetedSize()"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
+            landmarkName = "updateHorizontalTargetedImageViewRect()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

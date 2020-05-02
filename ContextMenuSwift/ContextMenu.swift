@@ -64,6 +64,7 @@ extension UIView {
 
 public struct ContextMenuConstants {
     var MaxZoom : CGFloat = 1.15
+    var MinZoom : CGFloat = 0.6
     var MenuDefaultHeight : CGFloat = 120
     var MenuWidth : CGFloat = 250
     var MenuMarginSpace : CGFloat = 20
@@ -451,20 +452,20 @@ public class ContextMenu {
         
         var zoomFactor = MenuConstants.MaxZoom
         
-        let zoomFactorHorizontal = backgroundWidth/targetedImageFrame.width
-        let zoomFactorVertical = backgroundHeight/targetedImageFrame.height
+//        let zoomFactorHorizontal = backgroundWidth/targetedImageFrame.width
+//        let zoomFactorVertical = backgroundHeight/targetedImageFrame.height
+//
+//        if zoomFactorHorizontal < zoomFactorVertical {
+//            zoomFactor = zoomFactorHorizontal
+//        }else{
+//            zoomFactor = zoomFactorVertical
+//        }
+//        if zoomFactor > MenuConstants.MaxZoom {
+//            zoomFactor = MenuConstants.MaxZoom
+//        }
         
-        if zoomFactorHorizontal < zoomFactorVertical {
-            zoomFactor = zoomFactorHorizontal
-        }else{
-            zoomFactor = zoomFactorVertical
-        }
-        if zoomFactor > MenuConstants.MaxZoom {
-            zoomFactor = MenuConstants.MaxZoom
-        }
-        
-        var updatedWidth = (targetedImageFrame.width * zoomFactor)
-        var updatedHeight = (targetedImageFrame.height * zoomFactor)
+        var updatedWidth = targetedImageFrame.width // * zoomFactor
+        var updatedHeight = targetedImageFrame.height // * zoomFactor
         
         if backgroundWidth > backgroundHeight {
             
@@ -480,17 +481,14 @@ public class ContextMenu {
                 zoomFactor = MenuConstants.MaxZoom
             }
             
+            // Menu Height
             if self.menuHeight > backgroundHeight {
                 self.menuHeight = backgroundHeight + MenuConstants.MenuMarginSpace
             }
         }else{
             
-//            if self.menuHeight > backgroundWidth {
-//                self.menuHeight = backgroundWidth + MenuConstants.MenuMarginSpace
-//            }
-            
             let zoomFactorHorizontalWithMenu = backgroundWidth/(updatedWidth)
-            let zoomFactorVerticalWithMenu = backgroundHeight/(updatedHeight + self.menuHeight + MenuConstants.TopMarginSpace + MenuConstants.BottomMarginSpace)
+            let zoomFactorVerticalWithMenu = backgroundHeight/(updatedHeight + self.menuHeight + MenuConstants.MenuMarginSpace)
             
             if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
                 zoomFactor = zoomFactorHorizontalWithMenu
@@ -499,10 +497,9 @@ public class ContextMenu {
             }
             if zoomFactor > MenuConstants.MaxZoom {
                 zoomFactor = MenuConstants.MaxZoom
-            }else if zoomFactor < 0.7 {
-                zoomFactor = 0.7
+            }else if zoomFactor < MenuConstants.MinZoom {
+                zoomFactor = MenuConstants.MinZoom
             }
-            
         }
 
         updatedWidth = (updatedWidth * zoomFactor)
@@ -519,6 +516,13 @@ public class ContextMenu {
         
 //        let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
 //        let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+//
+//        if backgroundWidth > backgroundHeight {
+//
+//        }
+//        else{
+//
+//        }
         
         if tvY > mainViewRect.height - MenuConstants.BottomMarginSpace - tvH {
             tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
@@ -588,6 +592,18 @@ public class ContextMenu {
         else{
             mX = tvX + MenuConstants.MenuMarginSpace + tvW
         }
+        
+        if mH >= (mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace) {
+            mY = MenuConstants.TopMarginSpace
+            mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+        }
+        else if (tvY + mH) <= (mainViewRect.height - MenuConstants.BottomMarginSpace) {
+            mY = tvY
+        }
+        else if (tvY + mH) > (mainViewRect.height - MenuConstants.BottomMarginSpace){
+            mY = tvY - ((tvY + mH) - (mainViewRect.height - MenuConstants.BottomMarginSpace))
+        }
+        
         
     }
     
