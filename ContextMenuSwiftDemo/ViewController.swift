@@ -40,45 +40,45 @@ class ViewController: UIViewController {
     }
     
     func example1(){
-        menu1?.items = (0..<Int.random(in: 1..<5)).map { "Item \($0)" }
+        menu1?.items = (0..<4).map { "Item \($0)" }
         menu1?.addTapInteraction()
-        menu2?.items = (0..<Int.random(in: 5..<10)).map { "Item \($0)" }
+        menu2?.items = (0..<11).map { "Item \($0)" }
         menu2?.addTapInteraction()
         menu3?.items = (0..<Int.random(in: 10..<20)).map { "Item \($0)" }
         menu3?.addTapInteraction()
         
-        menu1?.onViewAppear = { _ in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.menu1?.items = (0..<Int.random(in: 1..<20)).map { "Item \($0)" }
-//                self.menu1?.updateView()
-//            }
+//        menu1?.onViewAppear = { _ [weak self] in
+////            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+////                self.menu1?.items = (0..<Int.random(in: 1..<20)).map { "Item \($0)" }
+////                self.menu1?.updateView()
+////            }
+////            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+////                self.menu1?.changeViewTargeted(newView: self.cv2)
+////                self.menu1?.updateView()
+////            }
+////            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+////                self.menu1?.viewTargeted = self.cv3
+////                self.menu1?.updateView()
+////            }
+////            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+////                self.menu1?.viewTargeted = self.cv1
+////                self.menu1?.updateView()
+////            }
+//        }
+//        menu1?.onViewDismiss = { [weak self] (_) in
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                self.menu1?.changeViewTargeted(newView: self.cv2)
-//                self.menu1?.updateView()
+//                self.menu1?.changeViewTargeted(newView: self.cv1)
 //            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                self.menu1?.viewTargeted = self.cv3
+//        }
+//        menu1?.onItemTap = { [weak self] (index, item) in
+//            print(index, item)
+//            if item.title == "Item 0" {
+//                self.menu1?.items = (0..<Int.random(in: 1..<5)).map { "Item \($0)" }
 //                self.menu1?.updateView()
+//                return false
 //            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                self.menu1?.viewTargeted = self.cv1
-//                self.menu1?.updateView()
-//            }
-        }
-        menu1?.onViewDismiss = { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.menu1?.changeViewTargeted(newView: self.cv1)
-            }
-        }
-        menu1?.onItemTap = { (index, item) in
-            print(index, item)
-            if item.title == "Item 0" {
-                self.menu1?.items = (0..<Int.random(in: 1..<5)).map { "Item \($0)" }
-                self.menu1?.updateView()
-                return false
-            }
-            return true
-        }
+//            return true
+//        }
     }
     
     func example2(){
@@ -91,12 +91,19 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonAction(_ sender: UIButton) {
-//        cv1.showMenu(items: ["a", "b"]) { (index, item) in
+//        cv1.showMenu(items: (0..<Int.random(in: 5..<10)).map { "Item \($0)" }) { (index, item) in
 //            print(index, item)
 //            return true
 //        }
-        menu1?.items = (0..<Int.random(in: 5..<10)).map { "Item \($0)" }
-        menu1?.showMenu()
+//        menu1?.items = (0..<Int.random(in: 5..<10)).map { "Item \($0)" }
+//        menu1?.showMenu()
+        
+        let menu = ContextMenu(viewTargeted: self.cv1)
+        menu?.items = (0..<Int.random(in: 0..<20)).map { "Item \($0)" }
+        menu?.showMenu()
+//        menu?.onViewDismiss = { _ in
+//
+//        }
     }
     
 }
