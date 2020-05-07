@@ -35,32 +35,44 @@ public struct ContextMenuItemWithImage: ContextMenuItem {
     public var image: UIImage?
 }
 
-extension UIView {
-    
-    public func showMenu(wind: UIWindow, items: [ContextMenuItem], actionHandler: ((_ index: Int, _ item: ContextMenuItem) -> Bool)?){
-        let cust = ContextMenu(viewTargeted: self, window: wind)
-        cust.items = items
-        cust.onItemTap = { index, item in
-            (actionHandler?(index, item) ?? true)
-        }
-        cust.showMenu()
-    }
-    
-    public func showMenu(items: [ContextMenuItem], actionHandler: ((_ index: Int, _ item: ContextMenuItem) -> Bool)?){
-        if let cust = ContextMenu(viewTargeted: self) {
-            cust.items = items
-            cust.onItemTap = { index, item in
-                (actionHandler?(index, item) ?? true)
-            }
-            cust.showMenu()
-        }
-    }
-    
-    public func getContextMenu(window: UIView? = nil) -> ContextMenu?{
-        return ContextMenu(viewTargeted: self, window: window)
-    }
-    
+//extension UIView {
+//
+//    public func showMenu(wind: UIWindow, items: [ContextMenuItem], actionHandler: ((_ index: Int, _ item: ContextMenuItem) -> Bool)?){
+//        let cust = ContextMenu(viewTargeted: self, window: wind)
+//        cust.items = items
+//        cust.onItemTap = { index, item in
+//            (actionHandler?(index, item) ?? true)
+//        }
+//        cust.showMenu()
+//    }
+//
+//    public func showMenu(items: [ContextMenuItem], actionHandler: ((_ index: Int, _ item: ContextMenuItem) -> Bool)?){
+//        if let cust = ContextMenu(viewTargeted: self) {
+//            cust.items = items
+//            cust.onItemTap = { index, item in
+//                (actionHandler?(index, item) ?? true)
+//            }
+//            cust.showMenu()
+//        }
+//    }
+//
+////    public func getContextMenu(window: UIView? = nil) -> ContextMenu?{
+////        return ContextMenu(viewTargeted: self, window: window)
+////    }
+////
+//}
+
+public protocol ContextMenuDelegate : class {
+    func contextMenu(_ contextMenu: ContextMenu, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool
+    func contextMenuDidAppear(_ contextMenu: ContextMenu)
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu)
 }
+extension ContextMenuDelegate {
+    func contextMenuDidAppear(_ contextMenu: ContextMenu){}
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu){}
+}
+
+public var CM : ContextMenu = ContextMenu()
 
 public struct ContextMenuConstants {
     var MaxZoom : CGFloat = 1.15
@@ -92,7 +104,7 @@ public class ContextMenu {
     var mainViewRect : CGRect
     
     //    var window : UIView
-    var viewTargeted: UIView
+    var viewTargeted: UIView!
     
     var customView = UIView()
     var blurEffectView = UIVisualEffectView()
@@ -127,8 +139,16 @@ public class ContextMenu {
     var mY : CGFloat = 0.0
     var mX : CGFloat = 0.0
     
+    private weak var delegate : ContextMenuDelegate?
     
-    public init?(viewTargeted: UIView, window: UIView? = nil) {
+    
+    public init(window: UIView? = nil) {
+        let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow
+        self.customView = wind!
+        self.mainViewRect = wind!.frame
+    }
+    
+    init?(viewTargeted: UIView, window: UIView? = nil) {
         if let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow {
             self.customView = wind
             self.viewTargeted = viewTargeted
@@ -138,41 +158,41 @@ public class ContextMenu {
         }
     }
     
-    public init(viewTargeted: UIView, window: UIView) {
+    init(viewTargeted: UIView, window: UIView) {
         self.viewTargeted = viewTargeted
         self.customView = window
         self.mainViewRect = window.frame
     }
     
-    
-    
     deinit {
-        removeTapInteraction()
+//        removeTapInteraction()
         print("Deinit")
     }
     
-    public func addTapInteraction(){
-        self.viewTargeted.isUserInteractionEnabled = true
-        touchGesture = UITapGestureRecognizer(target: self, action: #selector(self.itemTapped(_:)))
-        self.viewTargeted.addGestureRecognizer(touchGesture!)
-    }
+//    public func addTapInteraction(){
+//        self.viewTargeted.isUserInteractionEnabled = true
+//        touchGesture = UITapGestureRecognizer(target: self, action: #selector(self.itemTapped(_:)))
+//        self.viewTargeted.addGestureRecognizer(touchGesture!)
+//    }
+//
+//    public func removeTapInteraction(){
+//        if let gesture = self.touchGesture {
+//            self.viewTargeted.removeGestureRecognizer(gesture)
+//            self.viewTargeted.isUserInteractionEnabled = false
+//            self.touchGesture = nil
+//        }
+//    }
+//
+//    @objc func itemTapped(_ sender: UITapGestureRecognizer? = nil){
+//        DispatchQueue.main.async {
+//            self.showMenu()
+//        }
+//    }
     
-    public func removeTapInteraction(){
-        if let gesture = self.touchGesture {
-            self.viewTargeted.removeGestureRecognizer(gesture)
-            self.viewTargeted.isUserInteractionEnabled = false
-            self.touchGesture = nil
-        }
-    }
-    
-    @objc func itemTapped(_ sender: UITapGestureRecognizer? = nil){
+    public func showMenu(viewTargeted: UIView, delegate: ContextMenuDelegate){
         DispatchQueue.main.async {
-            self.showMenu()
-        }
-    }
-    
-    public func showMenu(){
-        DispatchQueue.main.async {
+            self.delegate = delegate
+            self.viewTargeted = viewTargeted
             if !self.items.isEmpty {
                 self.menuHeight = CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight + CGFloat(self.items.count - 1)
             }else{
@@ -180,7 +200,7 @@ public class ContextMenu {
             }
             
             self.addBlurEffectView()
-            self.addCloseButton()
+//            self.addCloseButton()
             self.addMenuView()
             self.addTargetedImageView()
             
@@ -190,6 +210,12 @@ public class ContextMenu {
     
     public func changeViewTargeted(newView: UIView){
         DispatchQueue.main.async {
+            
+            guard self.viewTargeted != nil else{
+                print("targetedView is nil")
+                return
+            }
+            
             self.viewTargeted.alpha = 1
             if let gesture = self.touchGesture {
                 self.viewTargeted.removeGestureRecognizer(gesture)
@@ -205,6 +231,12 @@ public class ContextMenu {
     
     public func updateView(){
         DispatchQueue.main.async {
+            
+            guard self.viewTargeted != nil else{
+                print("targetedView is nil")
+                return
+            }
+            
             guard self.customView.subviews.contains(self.targetedImageView) else {return}
             if !self.items.isEmpty {
                 self.menuHeight = CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight + CGFloat(self.items.count - 1)
@@ -241,14 +273,14 @@ public class ContextMenu {
             blurEffectView.effect = nil
             blurEffectView.backgroundColor = MenuConstants.BackgroundViewColor
         }
-        blurEffectView.isUserInteractionEnabled = false
+        
         blurEffectView.frame = CGRect(x: mainViewRect.origin.x, y: mainViewRect.origin.y, width: mainViewRect.width, height: mainViewRect.height)
         //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         //        blurEffectView.alpha = 0
         if closeGesture == nil {
-            //            blurEffectView.isUserInteractionEnabled = true
-            //            closeGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissViewAction(_:)))
-            //            blurEffectView.addGestureRecognizer(closeGesture!)
+            blurEffectView.isUserInteractionEnabled = true
+            closeGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissViewAction(_:)))
+            blurEffectView.addGestureRecognizer(closeGesture!)
         }
     }
     
@@ -355,7 +387,14 @@ public class ContextMenu {
             }
             btn.actionHandler(controlEvents: .touchUpInside) { [weak self] in
                 btn.backgroundColor = UIColor.clear
-                if self?.onItemTap?(index, actionItem) ?? true {
+                if self?.onItemTap?(index, actionItem) ?? false {
+                    self?.closeAllViews()
+                }
+                if let weakSelf = self {
+                    if weakSelf.delegate?.contextMenu(weakSelf, targetedView: (self?.viewTargeted)!, didSelect: actionItem, forRowAt: index) ?? false {
+                        weakSelf.closeAllViews()
+                    }
+                }else{
                     self?.closeAllViews()
                 }
             }
@@ -403,6 +442,8 @@ public class ContextMenu {
         }
         self.updateTargetedImageViewPosition()
         self.onViewAppear?(self.viewTargeted)
+        
+        self.delegate?.contextMenuDidAppear(self)
     }
     
     func closeAllViews(){
@@ -429,7 +470,7 @@ public class ContextMenu {
                 
             }) { (_) in
                 DispatchQueue.main.async {
-                    self.viewTargeted.alpha = 1
+                    self.viewTargeted?.alpha = 1
                     self.targetedImageView.alpha = 0
                     self.targetedImageView.removeFromSuperview()
                     self.blurEffectView.removeFromSuperview()
@@ -439,6 +480,7 @@ public class ContextMenu {
                 }
             }
             self.onViewDismiss?(self.viewTargeted)
+            self.delegate?.contextMenuDidAppear(self)
         }
     }
     
