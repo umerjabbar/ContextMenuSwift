@@ -1,10 +1,5 @@
 # ContextMenuSwift
 
-
-- Contextual menus with delightful animations and styles
-- Total control over menu contents using your own `UIViewController`s
-- Tons of feature and interaction customizations
-
 ## Installation
 
 Just add `ContextMenuSwift` to your Podfile and `pod install`. Done!
@@ -15,61 +10,29 @@ pod 'ContextMenuSwift'
 
 ## Usage
 
-Show the menu by calling show menu function on your view with some items and response handler action:
+<img src="/images/example1.gif" />
+
+Show the menu of string values on your view
 
 ```swift
-YourView.showMenu( items: ["Item 1", "Item 2"] ) { (index, item) in
-    print(index, item)
-}
+CM.items = ["Item 1", "Item 2", "Item 3"]
+CM.showMenu(viewTargeted: YourView, delegate: self)
 ```
 
-You must provide a custom `UIViewController` to display in the menu. The only requirement is that you must set `preferredContentSize` to size your content.
+Update menu items
 
 ```swift
-class MyContentViewController: UIViewController {
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    title = "Demo"
-    preferredContentSize = CGSize(width: 200, height: 200)
-  }
-}
+CM.items = ["Item 1", "Item 2", "Item 3"]
+CM.showMenu(viewTargeted: YourView, delegate: self)
+CM.items = ["Item 1"]
+CM.updateView()
 ```
 
-## Customizations
-
-### Display from a Source View
-
-Animate the menu out from a button or view. `ContextMenu` will take care of layout so that your menu doesn't clip the screen.
+Update targeted view 
 
 ```swift
-@IBAction func onButton(_ sender: UIButton) {
-  ContextMenu.shared.show(
-    sourceViewController: self,
-    viewController: MyContentViewController(),
-    sourceView: sender
-  )
-}
+CM.items = ["Item 1", "Item 2", "Item 3"]
+CM.showMenu(viewTargeted: YourView, delegate: self)
+CM.changeViewTargeted(newView: YourView)
+CM.updateView()
 ```
-
-### Container Style & Display
-
-Use `ContextMenu.Options` to change the appearance of the containing view.
-
-```swift
-ContextMenu.shared.show(
-  sourceViewController: self,
-  viewController: MenuViewController(),
-  options: ContextMenu.Options(containerStyle: ContextMenu.ContainerStyle(backgroundColor: .blue)),
-  sourceView: button
-)
-```
-
-
-There's plenty more you can customize with `ContextMenu.ContainerStyle`:
-
-- `cornerRadius`: The corner radius of the menu
-- `shadowRadius` and `shadowOpacity`: Appearance of the container shadow
-- `xPadding`, `yPadding`, `edgePadding`: Padding from the source view and screen edge
-- `overlayColor`: The color of the background
-- `motionEffect`: Respond to device gyroscope changes, similar to app icons on Springboard.app.
-

@@ -43,12 +43,12 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
 
     @IBAction func buttonAction(_ sender: UIButton) {
-        CM.items = (0..<Int.random(in: 10..<20)).map { "Item \($0)" }
+        CM.items = (0..<Int.random(in: 5..<8)).map { "Item \($0)" }
         CM.showMenu(viewTargeted: self.cv1, delegate: self)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            CM.changeViewTargeted(newView: self.cv3)
-            CM.updateView()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//            CM.changeViewTargeted(newView: self.cv3)
+//            CM.updateView()
+//        }
     }
     
 }
