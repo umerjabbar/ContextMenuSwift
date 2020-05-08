@@ -1,5 +1,11 @@
 # ContextMenuSwift
 
+
+![License](https://img.shields.io/cocoapods/l/Hero.svg?style=flat)
+![Xcode 10.0+](https://img.shields.io/badge/Xcode-9.0%2B-blue.svg)
+![iOS 10.0+](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
+![Swift 4.0+](https://img.shields.io/badge/Swift-4.0%2B-orange.svg)
+
 ## Installation
 
 Just add `ContextMenuSwift` to your Podfile and `pod install`. Done!
@@ -8,9 +14,11 @@ Just add `ContextMenuSwift` to your Podfile and `pod install`. Done!
 pod 'ContextMenuSwift'
 ```
 
-## Usage
+## Usage 
 
-<img src="/Images/example1.gif" />
+### Example 1
+
+<img src="/Images/example1.gif" height="520" />
 
 Show the menu of string values on your view
 
@@ -19,8 +27,9 @@ CM.items = ["Item 1", "Item 2", "Item 3"]
 CM.showMenu(viewTargeted: YourView, delegate: self)
 ```
 
+### Example 2
 
-<img src="/Images/example2.gif" />
+<img src="/Images/example2.gif" height="520" />
 
 Update menu items async
 
@@ -33,8 +42,9 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 }
 ```
 
+### Example 3
 
-<img src="/Images/example3.gif" />
+<img src="/Images/example3.gif" height="520" />
 
 Update targeted view async
 
@@ -47,8 +57,9 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 }
 ```
 
+### Example 4
 
-<img src="/Images/menu_with_icons.jpeg" />
+<img src="/Images/menu_with_icons.jpeg" height="520" />
 
 Show menu with icons
 
