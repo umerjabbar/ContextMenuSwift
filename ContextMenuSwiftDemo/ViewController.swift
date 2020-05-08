@@ -20,35 +20,16 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        guard let window = UIApplication.shared.windows.first else{return}
-//        menu1 = ContextMenu(viewTargeted: cv1, window: window)
-//        menu1?.addTapInteraction()
-//        menu2 = ContextMenu(viewTargeted: cv2, window: window)
-//        menu2?.addTapInteraction()
-//        menu3 = ContextMenu(viewTargeted: cv3, window: self.canvas)
-//        menu3?.addTapInteraction()
-        
-//        example1()
-        
-        
-    }
-    
-    deinit {
-        
-    }
-    
-    func example1(){
-        CM.items = (0..<Int.random(in: 10..<20)).map { "Item \($0)" }
-        CM.showMenu(viewTargeted: self.cv1, delegate: self)
     }
 
     @IBAction func buttonAction(_ sender: UIButton) {
-        CM.items = (0..<Int.random(in: 5..<8)).map { "Item \($0)" }
+        CM.items = (0..<Int.random(in: 6..<8)).map { "Item \($0)" }
         CM.showMenu(viewTargeted: self.cv1, delegate: self)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//            CM.changeViewTargeted(newView: self.cv3)
-//            CM.updateView()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//            CM.items = (0..<Int.random(in: 2..<4)).map { "Item \($0)" }
+            CM.changeViewTargeted(newView: self.cv3)
+            CM.updateView()
+        }
     }
     
 }

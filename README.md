@@ -19,20 +19,30 @@ CM.items = ["Item 1", "Item 2", "Item 3"]
 CM.showMenu(viewTargeted: YourView, delegate: self)
 ```
 
-Update menu items
+
+<img src="/Images/example2.gif" />
+
+Update menu items async
 
 ```swift
 CM.items = ["Item 1", "Item 2", "Item 3"]
 CM.showMenu(viewTargeted: YourView, delegate: self)
-CM.items = ["Item 1"]
-CM.updateView()
+DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+    CM.items = ["Item 1"]
+    CM.updateView()
+}
 ```
 
-Update targeted view 
+
+<img src="/Images/example3.gif" />
+
+Update targeted view async
 
 ```swift
 CM.items = ["Item 1", "Item 2", "Item 3"]
 CM.showMenu(viewTargeted: YourView, delegate: self)
-CM.changeViewTargeted(newView: YourView)
-CM.updateView()
+DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+    CM.changeViewTargeted(newView: YourView)
+    CM.updateView()
+}
 ```
