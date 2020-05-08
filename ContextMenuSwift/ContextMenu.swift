@@ -33,6 +33,11 @@ extension String : ContextMenuItem {
 public struct ContextMenuItemWithImage: ContextMenuItem {
     public var title: String
     public var image: UIImage?
+    
+    public init(title: String, image: UIImage) {
+        self.title = title
+        self.image = image
+    }
 }
 
 //extension UIView {
@@ -374,7 +379,8 @@ public class ContextMenu {
             btn.titleLabel?.font = MenuConstants.LabelDefaultFont
             if let img = actionItem.image {
                 let iconImageView = UIImageView(image: img)
-                menuView.addSubview(iconImageView)
+                iconImageView.tag = 13
+                btn.addSubview(iconImageView)
                 iconImageView.contentMode = .scaleAspectFit
                 iconImageView.translatesAutoresizingMaskIntoConstraints = false
                 iconImageView.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -14).isActive = true

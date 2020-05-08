@@ -46,3 +46,16 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
     CM.updateView()
 }
 ```
+
+
+<img src="/Images/menu_with_icons.jpeg" />
+
+Show menu with icons
+
+```swift
+let share = ContextMenuItemWithImage(title: "Share", image: #imageLiteral(resourceName: "icons8-upload"))
+let edit = "Edit"
+let delete = ContextMenuItemWithImage(title: "Delete", image: #imageLiteral(resourceName: "icons8-trash"))
+CM.items = [share, edit, delete]
+CM.showMenu(viewTargeted: YourView, delegate: self)
+```

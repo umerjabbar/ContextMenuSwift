@@ -23,13 +23,18 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
 
     @IBAction func buttonAction(_ sender: UIButton) {
-        CM.items = (0..<Int.random(in: 6..<8)).map { "Item \($0)" }
+        let share = ContextMenuItemWithImage(title: "Share", image: #imageLiteral(resourceName: "icons8-upload"))
+        let edit = "Edit"
+        let delete = ContextMenuItemWithImage(title: "Delete", image: #imageLiteral(resourceName: "icons8-trash"))
+        CM.items = [share, edit, delete]
         CM.showMenu(viewTargeted: self.cv1, delegate: self)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 //            CM.items = (0..<Int.random(in: 2..<4)).map { "Item \($0)" }
-            CM.changeViewTargeted(newView: self.cv3)
-            CM.updateView()
-        }
+//            CM.changeViewTargeted(newView: self.cv3)
+//            CM.updateView()
+//        }
+        
+        
     }
     
 }
