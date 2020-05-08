@@ -1,6 +1,7 @@
 # ContextMenuSwift
 
-[![Twitter: @Umer_Jabbar](http://img.shields.io/badge/contact-%40Umer_Jabbar-70a1fb.svg?style=flat)](https://twitter.com/Umer_Jabbar)
+[![Linkedin: umerjabbar](http://img.shields.io/badge/linkedin-umerjabbar-70a1fb.svg?style=flat)](https://www.linkedin.com/in/umerjabbar)
+[![Twitter: @Umer_Jabbar](http://img.shields.io/badge/twitter-%40Umer_Jabbar-70a1fb.svg?style=flat)](https://twitter.com/Umer_Jabbar)
 ![License](https://img.shields.io/cocoapods/l/Hero.svg?style=flat)
 ![Xcode 10.0+](https://img.shields.io/badge/Xcode-9.0%2B-blue.svg)
 ![iOS 10.0+](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
@@ -90,6 +91,6 @@ ContextMenuSwift was developed after trying to implement iOS 13 context menu wit
 
 It will be updated when necessary and fixes will be done as soon as discovered to keep it up to date.
 
-You can find me on Twitter [@Umer_Jabbar](https://twitter.com/Umer_Jabbar).
+You can find me on Twitter [@Umer_Jabbar](https://twitter.com/Umer_Jabbar) and Linkedin [umerjabbar](https://www.linkedin.com/in/umerjabbar/).
 
 Enjoy! 🤓
