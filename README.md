@@ -10,7 +10,7 @@ pod 'ContextMenuSwift'
 
 ## Usage
 
-<img src="/images/example1.gif" />
+<img src="/Images/example1.gif" />
 
 Show the menu of string values on your view
 
