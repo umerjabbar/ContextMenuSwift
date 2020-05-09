@@ -73,9 +73,31 @@ CM.items = [share, edit, delete]
 CM.showMenu(viewTargeted: YourView, delegate: self)
 ```
 
+### Delegate
+
+You can check events by implement ContextMenuDelegate
+```swift
+extension ViewController : ContextMenuDelegate {
+    
+    func contextMenu(_ contextMenu: ContextMenu, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+        print(item.title)
+        return true //should dismiss on tap
+    }
+    
+    func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+        print("contextMenuDidAppear")
+    }
+    
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+        print("contextMenuDidDisappear")
+    }
+ 
+}
+```
+
 ## Requirements
 
-* Xcode 10+
+* Xcode 9+
 * Swift 4.0
 * iOS 10+
 
@@ -85,8 +107,7 @@ This project is under MIT license. For more information, see `LICENSE` file.
 
 ## Credits 
 
-ContextMenuSwift was developed after trying to implement iOS 13 context menu with a tap gesture.
-
+ContextMenuSwift was developed while trying to implement iOS 13 context menu with a tap gesture.
 
 
 It will be updated when necessary and fixes will be done as soon as discovered to keep it up to date.
