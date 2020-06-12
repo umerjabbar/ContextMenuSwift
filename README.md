@@ -26,7 +26,7 @@ Show the menu of string values on your view
 
 ```swift
 CM.items = ["Item 1", "Item 2", "Item 3"]
-CM.showMenu(viewTargeted: YourView, delegate: self)
+CM.showMenu(viewTargeted: YourView, delegate: self, animated: true)
 ```
 
 ### Example 2
@@ -37,10 +37,10 @@ Update menu items async
 
 ```swift
 CM.items = ["Item 1", "Item 2", "Item 3"]
-CM.showMenu(viewTargeted: YourView, delegate: self)
+CM.showMenu(viewTargeted: YourView, delegate: self, animated: true)
 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
     CM.items = ["Item 1"]
-    CM.updateView()
+    CM.updateView(animated: true)
 }
 ```
 
@@ -52,10 +52,10 @@ Update targeted view async
 
 ```swift
 CM.items = ["Item 1", "Item 2", "Item 3"]
-CM.showMenu(viewTargeted: YourView, delegate: self)
+CM.showMenu(viewTargeted: YourView, delegate: self, animated: true)
 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
     CM.changeViewTargeted(newView: YourView)
-    CM.updateView()
+    CM.updateView(animated: true)
 }
 ```
 
@@ -70,7 +70,7 @@ let share = ContextMenuItemWithImage(title: "Share", image: #imageLiteral(resour
 let edit = "Edit"
 let delete = ContextMenuItemWithImage(title: "Delete", image: #imageLiteral(resourceName: "icons8-trash"))
 CM.items = [share, edit, delete]
-CM.showMenu(viewTargeted: YourView, delegate: self)
+CM.showMenu(viewTargeted: YourView, delegate: self, animated: true)
 ```
 
 ### Delegate

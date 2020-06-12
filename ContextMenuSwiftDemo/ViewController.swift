@@ -43,7 +43,9 @@ extension ViewController : ContextMenuDelegate {
     
     func contextMenu(_ contextMenu: ContextMenu, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
         print(item.title)
-        return true
+        contextMenu.items = ["Item 1", "Item 1", "Item 1", "Item 1", ]
+        contextMenu.updateView(animated: false)
+        return false
     }
     
     func contextMenuDidAppear(_ contextMenu: ContextMenu) {
