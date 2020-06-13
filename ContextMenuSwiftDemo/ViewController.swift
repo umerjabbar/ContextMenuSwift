@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         let share = ContextMenuItemWithImage(title: "Share", image: #imageLiteral(resourceName: "icons8-upload"))
         let edit = "Edit"
         let delete = ContextMenuItemWithImage(title: "Delete", image: #imageLiteral(resourceName: "icons8-trash"))
+        CM.nibView = UINib(nibName: "CustomCell", bundle: .main)
         CM.items = [share, edit, delete]
         CM.showMenu(viewTargeted: self.cv1, delegate: self)
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -40,12 +41,17 @@ class ViewController: UIViewController, UITableViewDelegate {
 }
 
 extension ViewController : ContextMenuDelegate {
-    
-    func contextMenu(_ contextMenu: ContextMenu, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
-        print(item.title)
-        contextMenu.items = ["Item 1", "Item 1", "Item 1", "Item 1", ]
-        contextMenu.updateView(animated: false)
+    func contextMenuDidSelect(_ contextMenu: ContextMenu, tableView: UITableView, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+        if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CustomCell{
+            cell.action = { [weak self] val in
+                print(val)
+            }
+        }
         return false
+    }
+    
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu, tableView: UITableView, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+        
     }
     
     func contextMenuDidAppear(_ contextMenu: ContextMenu) {

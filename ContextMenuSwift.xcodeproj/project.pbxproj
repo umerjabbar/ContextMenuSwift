@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D9C692E2494CF4500F3A11C /* ContextMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C692C2494CF4500F3A11C /* ContextMenuCell.swift */; };
+		0D9C692F2494CF4500F3A11C /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C692D2494CF4500F3A11C /* ContextMenuCell.xib */; };
+		0D9C6932249502DE00F3A11C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C6930249502DE00F3A11C /* CustomCell.swift */; };
+		0D9C6933249502DE00F3A11C /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C6931249502DE00F3A11C /* CustomCell.xib */; };
 		981075CD245B86FE002986B9 /* ContextMenuSwift.framework in Sources */ = {isa = PBXBuildFile; fileRef = 98A63364245B816C003D3B8E /* ContextMenuSwift.framework */; };
 		981075D5245B87D5002986B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981075D4245B87D5002986B9 /* AppDelegate.swift */; };
 		981075D7245B87D5002986B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981075D6245B87D5002986B9 /* SceneDelegate.swift */; };
@@ -47,6 +51,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D9C692C2494CF4500F3A11C /* ContextMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuCell.swift; sourceTree = "<group>"; };
+		0D9C692D2494CF4500F3A11C /* ContextMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
+		0D9C6930249502DE00F3A11C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		0D9C6931249502DE00F3A11C /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		981075D2245B87D5002986B9 /* ContextMenuSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContextMenuSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981075D4245B87D5002986B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		981075D6245B87D5002986B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +96,8 @@
 				981075D4245B87D5002986B9 /* AppDelegate.swift */,
 				981075D6245B87D5002986B9 /* SceneDelegate.swift */,
 				981075D8245B87D5002986B9 /* ViewController.swift */,
+				0D9C6930249502DE00F3A11C /* CustomCell.swift */,
+				0D9C6931249502DE00F3A11C /* CustomCell.xib */,
 				981075DA245B87D5002986B9 /* Main.storyboard */,
 				981075DD245B87D5002986B9 /* Assets.xcassets */,
 				981075DF245B87D5002986B9 /* LaunchScreen.storyboard */,
@@ -130,6 +140,8 @@
 				98A63370245B81CF003D3B8E /* ContextMenu.swift */,
 				98A63367245B816C003D3B8E /* ContextMenuSwift.h */,
 				98A63368245B816C003D3B8E /* Info.plist */,
+				0D9C692C2494CF4500F3A11C /* ContextMenuCell.swift */,
+				0D9C692D2494CF4500F3A11C /* ContextMenuCell.xib */,
 			);
 			path = ContextMenuSwift;
 			sourceTree = "<group>";
@@ -230,6 +242,7 @@
 			files = (
 				981075E1245B87D5002986B9 /* LaunchScreen.storyboard in Resources */,
 				981075DE245B87D5002986B9 /* Assets.xcassets in Resources */,
+				0D9C6933249502DE00F3A11C /* CustomCell.xib in Resources */,
 				981075DC245B87D5002986B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				981075ED245B9F19002986B9 /* README.md in Resources */,
+				0D9C692F2494CF4500F3A11C /* ContextMenuCell.xib in Resources */,
 				981075EC245B9F19002986B9 /* ContextMenuSwift.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +266,7 @@
 			files = (
 				981075D9245B87D5002986B9 /* ViewController.swift in Sources */,
 				981075D5245B87D5002986B9 /* AppDelegate.swift in Sources */,
+				0D9C6932249502DE00F3A11C /* CustomCell.swift in Sources */,
 				981075D7245B87D5002986B9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +277,7 @@
 			files = (
 				981075CD245B86FE002986B9 /* ContextMenuSwift.framework in Sources */,
 				98A63371245B81CF003D3B8E /* ContextMenu.swift in Sources */,
+				0D9C692E2494CF4500F3A11C /* ContextMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

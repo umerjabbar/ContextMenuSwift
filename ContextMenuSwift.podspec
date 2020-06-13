@@ -29,6 +29,6 @@ This CocoaPods library helps you with context menu for older ios versions.
   spec.swift_version = "5"
 
   spec.source        = { :git => "https://github.com/umerjabbar/ContextMenuSwift.git", :tag => "#{spec.version}" }
-  spec.source_files  = "ContextMenuSwift/**/*.{h,m,swift}"
+  spec.source_files  = "ContextMenuSwift/**/*.{h,m,swift,xib}"
 
 end
