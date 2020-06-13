@@ -196,6 +196,7 @@ public class ContextMenu {
 //    }
     
     public func showMenu(viewTargeted: UIView, delegate: ContextMenuDelegate, animated: Bool = true){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         DispatchQueue.main.async {
             self.delegate = delegate
             self.viewTargeted = viewTargeted
@@ -459,6 +460,7 @@ public class ContextMenu {
     }
     
     func closeAllViews(){
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
         DispatchQueue.main.async {
             //            UIView.animate(withDuration: 0.2, animations: {
             //                self.blurEffectView.alpha = 0
@@ -473,7 +475,7 @@ public class ContextMenu {
             
             let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
             if self.closeAnimation {
-                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
                     self.blurEffectView.alpha = 0
                     self.targetedImageView.layer.shadowOpacity = 0
                     self.targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
@@ -512,6 +514,15 @@ public class ContextMenu {
             self.onViewDismiss?(self.viewTargeted)
             self.delegate?.contextMenuDidAppear(self)
         }
+    }
+    
+    @objc func rotated() {
+        self.updateView()
+//        if UIDevice.current.orientation.isLandscape {
+//            print("Landscape")
+//        } else {
+//            print("Portrait")
+//        }
     }
     
     func getZoomedTargetedSize() -> CGRect{
