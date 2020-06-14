@@ -56,11 +56,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 
 extension ViewController : ContextMenuDelegate {
-    func contextMenuDidSelect(_ contextMenu: ContextMenu, tableView: UITableView, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
-        return false
+    func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+        return true
     }
     
-    func contextMenuDidDeselect(_ contextMenu: ContextMenu, tableView: UITableView, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
         
     }
     

@@ -68,8 +68,8 @@ public struct ContextMenuItemWithImage: ContextMenuItem {
 //}
 
 public protocol ContextMenuDelegate : class {
-    func contextMenuDidSelect(_ contextMenu: ContextMenu, tableView: UITableView, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool
-    func contextMenuDidDeselect(_ contextMenu: ContextMenu, tableView: UITableView, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int)
+    func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int)
     func contextMenuDidAppear(_ contextMenu: ContextMenu)
     func contextMenuDidDisappear(_ contextMenu: ContextMenu)
 }
@@ -520,7 +520,7 @@ open class ContextMenu: NSObject {
                 }
             }
             self.onViewDismiss?(self.viewTargeted)
-            self.delegate?.contextMenuDidAppear(self)
+            self.delegate?.contextMenuDidDisappear(self)
         }
     }
     
@@ -857,13 +857,13 @@ extension ContextMenu : UITableViewDataSource, UITableViewDelegate {
         if self.onItemTap?(indexPath.row, item) ?? false {
             self.closeAllViews()
         }
-        if self.delegate?.contextMenuDidSelect(self, tableView: tableView, targetedView: self.viewTargeted, didSelect: self.items[indexPath.row], forRowAt: indexPath.row) ?? false {
+        if self.delegate?.contextMenuDidSelect(self, cell: tableView.cellForRow(at: indexPath) as! ContextMenuCell, targetedView: self.viewTargeted, didSelect: self.items[indexPath.row], forRowAt: indexPath.row) ?? false {
             self.closeAllViews()
         }
     }
     
     open func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.delegate?.contextMenuDidDeselect(self, tableView: tableView, targetedView: self.viewTargeted, didSelect: self.items[indexPath.row], forRowAt: indexPath.row)
+        self.delegate?.contextMenuDidDeselect(self, cell: tableView.cellForRow(at: indexPath) as! ContextMenuCell, targetedView: self.viewTargeted, didSelect: self.items[indexPath.row], forRowAt: indexPath.row)
     }
     
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
