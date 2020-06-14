@@ -13,9 +13,9 @@ class CustomCell: ContextMenuCell {
 
     var action: ((Bool) -> Void)?
     
-    override func setup(tableView: UITableView, item: ContextMenuItem, style: ContextMenuConstants? = nil) {
-        
-    }
+//    override func setup(item: ContextMenuItem, style: ContextMenuConstants? = nil) {
+//        super.setup(contentView, tableView: tableView, item: item)
+//    }
     
     @IBAction func switchTapAction(_ sender: UISwitch) {
         self.action?(sender.isOn)

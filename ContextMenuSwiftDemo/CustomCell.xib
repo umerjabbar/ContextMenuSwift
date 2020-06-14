@@ -30,7 +30,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="171.01449275362319" y="102.12053571428571"/>
+            <point key="canvasLocation" x="169.56521739130437" y="102.12053571428571"/>
         </tableViewCell>
     </objects>
 </document>

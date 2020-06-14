@@ -15,20 +15,17 @@ open class ContextMenuCell: UITableViewCell {
     @IBOutlet open weak var titleLabel: UILabel!
     @IBOutlet open weak var iconImageView: UIImageView!
     
+    weak var contextMenu: ContextMenu?
+    weak var tableView: UITableView?
+    var item: ContextMenuItem!
+    var style : ContextMenuConstants? = nil
+    
     override open func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
     override open func setSelected(_ selected: Bool, animated: Bool) {
-        
-
-//        if selected {
-//            self.contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-//        }else{
-//            self.contentView.backgroundColor = .clear
-//        }
-//
         super.setSelected(selected, animated: animated)
     }
     
@@ -54,7 +51,7 @@ open class ContextMenuCell: UITableViewCell {
         
     }
     
-    open func setup(tableView: UITableView, item: ContextMenuItem, style : ContextMenuConstants? = nil){
+    open func setup(){
         if let label = self.titleLabel {
             label.text = item.title
             if let menuConstants = style {
@@ -66,7 +63,6 @@ open class ContextMenuCell: UITableViewCell {
             imgView.image = item.image
             imgView.isHidden = (item.image == nil)
         }
-        
     }
     
 }

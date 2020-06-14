@@ -81,26 +81,28 @@ extension ContextMenuDelegate {
 public var CM : ContextMenu = ContextMenu()
 
 public struct ContextMenuConstants {
-    var MaxZoom : CGFloat = 1.15
-    var MinZoom : CGFloat = 0.6
-    var MenuDefaultHeight : CGFloat = 120
-    var MenuWidth : CGFloat = 250
-    var MenuMarginSpace : CGFloat = 20
-    var TopMarginSpace : CGFloat = 40
-    var BottomMarginSpace : CGFloat = 24
-    var HorizontalMarginSpace : CGFloat = 20
-    var ItemDefaultHeight : CGFloat = 44
+    public var MaxZoom : CGFloat = 1.15
+    public var MinZoom : CGFloat = 0.6
+    public var MenuDefaultHeight : CGFloat = 120
+    public var MenuWidth : CGFloat = 250
+    public var MenuMarginSpace : CGFloat = 20
+    public var TopMarginSpace : CGFloat = 40
+    public var BottomMarginSpace : CGFloat = 24
+    public var HorizontalMarginSpace : CGFloat = 20
+    public var ItemDefaultHeight : CGFloat = 44
+//    var headerDefaultHeight : CGFloat = 0
+//    var footerDefaultHeight : CGFloat = 0
     
-    var LabelDefaultFont : UIFont = .systemFont(ofSize: 14)
-    var LabelDefaultColor : UIColor = UIColor.black.withAlphaComponent(0.95)
-    var ItemDefaultColor : UIColor = UIColor.white.withAlphaComponent(0.95)
+    public var LabelDefaultFont : UIFont = .systemFont(ofSize: 14)
+    public var LabelDefaultColor : UIColor = UIColor.black.withAlphaComponent(0.95)
+    public var ItemDefaultColor : UIColor = UIColor.white.withAlphaComponent(0.95)
     
-    var MenuCornerRadius : CGFloat = 12
-    var BlurEffectEnabled : Bool = true
-    var BlurEffectDefault : UIBlurEffect = UIBlurEffect(style: .dark)
-    var BackgroundViewColor : UIColor = UIColor.black.withAlphaComponent(0.6)
+    public var MenuCornerRadius : CGFloat = 12
+    public var BlurEffectEnabled : Bool = true
+    public var BlurEffectDefault : UIBlurEffect = UIBlurEffect(style: .dark)
+    public var BackgroundViewColor : UIColor = UIColor.black.withAlphaComponent(0.6)
     
-    var DismissOnItemTap : Bool = false
+    public var DismissOnItemTap : Bool = false
 }
 
 open class ContextMenu: NSObject {
@@ -109,6 +111,8 @@ open class ContextMenu: NSObject {
     open var MenuConstants = ContextMenuConstants()
     open var viewTargeted: UIView!
     open var placeHolderView : UIView?
+    open var headerView : UIView?
+    open var footerView : UIView?
     open var nibView = UINib(nibName: ContextMenuCell.identifier, bundle: Bundle(for: ContextMenuCell.self))
     open var closeAnimation = true
     
@@ -127,7 +131,7 @@ open class ContextMenu: NSObject {
     private var closeButton = UIButton()
     private var targetedImageView = UIImageView()
     private var menuView = UIView()
-    private var tableView = UITableView()
+    public var tableView = UITableView()
     private var tableViewConstraint : NSLayoutConstraint?
     private var zoomedTargetedSize = CGRect()
     
@@ -201,7 +205,7 @@ open class ContextMenu: NSObject {
             self.delegate = delegate
             self.viewTargeted = viewTargeted
             if !self.items.isEmpty {
-                self.menuHeight = CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight // + CGFloat(self.items.count - 1)
+                self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
             }else{
                 self.menuHeight = self.MenuConstants.MenuDefaultHeight
             }
@@ -238,7 +242,7 @@ open class ContextMenu: NSObject {
             }
             guard self.customView.subviews.contains(self.targetedImageView) else {return}
             if !self.items.isEmpty {
-                self.menuHeight = CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight // + CGFloat(self.items.count - 1)
+                self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
             }else{
                 self.menuHeight = self.MenuConstants.MenuDefaultHeight
             }
@@ -339,6 +343,8 @@ open class ContextMenu: NSObject {
         
         tableView.frame = menuView.bounds
         tableView.register(self.nibView, forCellReuseIdentifier: "ContextMenuCell")
+        tableView.tableHeaderView = self.headerView
+        tableView.tableFooterView = self.footerView
         tableView.reloadData()
         tableView.dataSource = self
         tableView.delegate = self
@@ -347,6 +353,7 @@ open class ContextMenu: NSObject {
         tableView.alwaysBounceVertical = false
         tableView.allowsMultipleSelection = true
         tableView.backgroundColor = .clear
+        
         
 //        let stackView = UIStackView()
 //        stackView.axis = .vertical
@@ -837,7 +844,11 @@ extension ContextMenu : UITableViewDataSource, UITableViewDelegate {
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContextMenuCell", for: indexPath) as! ContextMenuCell
-        cell.setup(tableView: tableView, item: self.items[indexPath.row], style: self.MenuConstants)
+        cell.contextMenu = self
+        cell.tableView = tableView
+        cell.style = self.MenuConstants
+        cell.item = self.items[indexPath.row]
+        cell.setup()
         return cell
     }
     
