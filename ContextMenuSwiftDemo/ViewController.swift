@@ -35,14 +35,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let share = ContextMenuItemWithImage(title: "Share", image: #imageLiteral(resourceName: "icons8-upload"))
         let edit = "Edit"
         let delete = ContextMenuItemWithImage(title: "Delete", image: #imageLiteral(resourceName: "icons8-trash"))
-        CM.nibView = UINib(nibName: "CustomCell", bundle: .main)
+//        CM.nibView = UINib(nibName: "CustomCell", bundle: .main)
         CM.items = [share, edit, delete]
         CM.showMenu(viewTargeted: self.cv1, delegate: self)
         let vc1 = UIView(frame: CGRect(x: 0, y: 0, width: CM.MenuConstants.MenuWidth, height: 50))
         vc1.backgroundColor = .purple
         let vc2 = UIView(frame: CGRect(x: 0, y: 0, width: CM.MenuConstants.MenuWidth, height: 10))
         vc2.backgroundColor = .purple
-        CM.headerView = vc1
+//        CM.headerView = vc1
 //        CM.footerView = vc2
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 //            CM.items = (0..<Int.random(in: 2..<4)).map { "Item \($0)" }

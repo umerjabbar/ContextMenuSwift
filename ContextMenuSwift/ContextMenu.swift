@@ -216,7 +216,7 @@ open class ContextMenu: NSObject {
         }
     }
     
-    open func changeViewTargeted(newView: UIView){
+    open func changeViewTargeted(newView: UIView, animated: Bool = true){
         DispatchQueue.main.async {
             guard self.viewTargeted != nil else{
                 print("targetedView is nil")
@@ -231,6 +231,7 @@ open class ContextMenu: NSObject {
             if let gesture = self.touchGesture {
                 self.viewTargeted.addGestureRecognizer(gesture)
             }
+            self.updateTargetedImageViewPosition(animated: animated)
         }
     }
     
@@ -341,19 +342,18 @@ open class ContextMenu: NSObject {
                                 width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
         menuView.addSubview(tableView)
         
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.frame = menuView.bounds
         tableView.register(self.nibView, forCellReuseIdentifier: "ContextMenuCell")
         tableView.tableHeaderView = self.headerView
         tableView.tableFooterView = self.footerView
-        tableView.reloadData()
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.clipsToBounds = true
         tableView.isScrollEnabled = true
         tableView.alwaysBounceVertical = false
         tableView.allowsMultipleSelection = true
         tableView.backgroundColor = .clear
-        
+        tableView.reloadData()
         
 //        let stackView = UIStackView()
 //        stackView.axis = .vertical
