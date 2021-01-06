@@ -253,6 +253,10 @@ open class ContextMenu: NSObject {
         }
     }
     
+    open func closeMenu(){
+        self.closeAllViews()
+    }
+    
     // MARK:- Get Rendered Image Functions
     func getRenderedImage(afterScreenUpdates: Bool = false) -> UIImage{
         let renderer = UIGraphicsImageRenderer(size: viewTargeted.bounds.size)
