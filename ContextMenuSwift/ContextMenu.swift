@@ -257,6 +257,10 @@ open class ContextMenu: NSObject {
         self.closeAllViews()
     }
     
+    open func closeMenu(withAnimation animation: Bool) {
+        closeAllViews(withAnimation: animation)
+    }
+    
     // MARK:- Get Rendered Image Functions
     func getRenderedImage(afterScreenUpdates: Bool = false) -> UIImage{
         let renderer = UIGraphicsImageRenderer(size: viewTargeted.bounds.size)
@@ -506,7 +510,34 @@ open class ContextMenu: NSObject {
             self.delegate?.contextMenuDidDisappear(self)
         }
     }
-        
+    
+    func closeAllViews(withAnimation animation: Bool = true) {
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+        DispatchQueue.main.async {
+            self.targetedImageView.isUserInteractionEnabled = false
+            self.menuView.isUserInteractionEnabled = false
+            self.closeButton.isUserInteractionEnabled = false
+            
+            let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
+            if animation {
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
+                    self.prepareViewsForRemoveFromSuperView(with: rect)
+                }) { (_) in
+                    DispatchQueue.main.async {
+                        self.removeAllViewsFromSuperView()
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.prepareViewsForRemoveFromSuperView(with: rect)
+                    self.removeAllViewsFromSuperView()
+                }
+            }
+            self.onViewDismiss?(self.viewTargeted)
+            self.delegate?.contextMenuDidDisappear(self)
+        }
+    }
+    
     func prepareViewsForRemoveFromSuperView(with rect: CGPoint) {
         self.blurEffectView.alpha = 0
         self.targetedImageView.layer.shadowOpacity = 0
