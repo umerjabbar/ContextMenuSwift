@@ -488,44 +488,41 @@ open class ContextMenu: NSObject {
             let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
             if self.closeAnimation {
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
-                    self.blurEffectView.alpha = 0
-                    self.targetedImageView.layer.shadowOpacity = 0
-                    self.targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
-                    self.menuView.alpha = 0
-                    self.menuView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
+                    self.prepareViewsForRemoveFromSuperView(with: rect)
                     //                self.menuView.transform = CGAffineTransform.identity.scaledBy(x: 0, y: 0)//.translatedBy(x: 0, y: (self.menuHeight) * CGFloat((rect.y < self.menuView.frame.origin.y) ? -1 : 1) )
                     
                 }) { (_) in
                     DispatchQueue.main.async {
-                        self.viewTargeted?.alpha = 1
-                        self.targetedImageView.alpha = 0
-                        self.targetedImageView.removeFromSuperview()
-                        self.blurEffectView.removeFromSuperview()
-                        self.closeButton.removeFromSuperview()
-                        self.menuView.removeFromSuperview()
-                        self.tableView.removeFromSuperview()
+                        self.removeAllViewsFromSuperView()
                     }
                 }
             }else{
                 DispatchQueue.main.async {
-                    self.blurEffectView.alpha = 0
-                    self.targetedImageView.layer.shadowOpacity = 0
-                    self.targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
-                    self.menuView.alpha = 0
-                    self.menuView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
-                    
-                    self.viewTargeted?.alpha = 1
-                    self.targetedImageView.alpha = 0
-                    self.targetedImageView.removeFromSuperview()
-                    self.blurEffectView.removeFromSuperview()
-                    self.closeButton.removeFromSuperview()
-                    self.menuView.removeFromSuperview()
-                    self.tableView.removeFromSuperview()
+                    self.prepareViewsForRemoveFromSuperView(with: rect)
+                    self.removeAllViewsFromSuperView()
                 }
             }
             self.onViewDismiss?(self.viewTargeted)
             self.delegate?.contextMenuDidDisappear(self)
         }
+    }
+        
+    func prepareViewsForRemoveFromSuperView(with rect: CGPoint) {
+        self.blurEffectView.alpha = 0
+        self.targetedImageView.layer.shadowOpacity = 0
+        self.targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
+        self.menuView.alpha = 0
+        self.menuView.frame = CGRect(x: rect.x, y: rect.y, width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
+    }
+    
+    func removeAllViewsFromSuperView() {
+        self.viewTargeted?.alpha = 1
+        self.targetedImageView.alpha = 0
+        self.targetedImageView.removeFromSuperview()
+        self.blurEffectView.removeFromSuperview()
+        self.closeButton.removeFromSuperview()
+        self.menuView.removeFromSuperview()
+        self.tableView.removeFromSuperview()
     }
     
     @objc func rotated() {
