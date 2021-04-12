@@ -787,7 +787,6 @@ open class ContextMenu: NSObject {
         mY = tvY + MenuConstants.MenuMarginSpace
         mX = MenuConstants.HorizontalMarginSpace
         
-        self.fixTargetedImageViewExtrudings()
         
 //        else{
 //            if ((mainViewRect.width/2) - (mX + mW/2))/mainViewRect.width <= 0.5  {
