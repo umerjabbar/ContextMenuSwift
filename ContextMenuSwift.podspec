@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "ContextMenuSwift"
-  spec.version      = "0.0.7"
+  spec.version      = "1.0.0"
   spec.summary      = "A CocoaPods library written in Swift"
 
   spec.description  = <<-DESC
@@ -26,9 +26,9 @@ This CocoaPods library helps you with context menu for older ios versions.
   spec.author       = { "Umer Jabbar" => "umerabduljabbar@icloud.com" }
 
   spec.ios.deployment_target = "10.0"
-  spec.swift_version = "5"
+  spec.swift_versions = ["4.2", "5.0"]
 
   spec.source        = { :git => "https://github.com/umerjabbar/ContextMenuSwift.git", :tag => "#{spec.version}" }
-  spec.source_files  = "ContextMenuSwift/**/*.{h,m,swift,xib}"
+  spec.source_files  = "Sources/ContextMenuSwift/**/*.{h,m,swift,xib}"
 
 end
