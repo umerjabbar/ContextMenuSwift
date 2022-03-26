@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -11,7 +11,7 @@ let package = Package(
     targets: [
         .target(
             name: "ContextMenuSwift",
-            path: "Sources"
+            dependencies: []
         )
     ],
 swiftLanguageVersions: [.v5]
