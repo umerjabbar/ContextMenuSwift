@@ -8,11 +8,11 @@ let package = Package(
     products: [
         .library(name: "ContextMenuSwift", targets: ["ContextMenuSwift"])
     ],
+    dependencies: [],
     targets: [
         .target(
             name: "ContextMenuSwift",
             dependencies: []
         )
     ],
-swiftLanguageVersions: [.v5]
 )
