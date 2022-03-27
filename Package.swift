@@ -1,3 +1,5 @@
+// swift-tools-version:5.6
+
 import PackageDescription
 
 let package = Package(
@@ -6,11 +8,11 @@ let package = Package(
     products: [
         .library(name: "ContextMenuSwift", targets: ["ContextMenuSwift"])
     ],
+    dependencies: [],
     targets: [
         .target(
             name: "ContextMenuSwift",
-            path: "Sources"
+            dependencies: []
         )
     ],
-swiftLanguageVersions: [.v5]
 )
