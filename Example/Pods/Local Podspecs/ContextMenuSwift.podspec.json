@@ -14,9 +14,14 @@
   "platforms": {
     "ios": "10.0"
   },
+  "swift_versions": [
+    "4.2",
+    "5.0"
+  ],
   "source": {
     "git": "https://github.com/umerjabbar/ContextMenuSwift.git",
     "tag": "1.0.0"
   },
-  "source_files": "Sources/ContextMenuSwift/**/*.{h,m,swift,xib}"
+  "source_files": "Sources/ContextMenuSwift/**/*.{h,m,swift,xib}",
+  "swift_version": "5.0"
 }
