@@ -123,13 +123,13 @@ open class ContextMenu: NSObject {
     
     // MARK:- Init Functions
     public init(window: UIView? = nil) {
-        let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow
+        let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.windows.first(where: {$0.isKeyWindow})
         self.customView = wind!
         self.mainViewRect = wind!.frame
     }
     
     init?(viewTargeted: UIView, window: UIView? = nil) {
-        if let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow {
+        if let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.windows.first(where: {$0.isKeyWindow}) {
             self.customView = wind
             self.viewTargeted = viewTargeted
             self.mainViewRect = self.customView.frame
