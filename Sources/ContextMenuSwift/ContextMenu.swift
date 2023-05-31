@@ -133,7 +133,7 @@ open class ContextMenu: NSObject {
             self.customView = wind
             self.viewTargeted = viewTargeted
             self.mainViewRect = self.customView.frame
-        }else{
+        } else {
             return nil
         }
     }
@@ -168,7 +168,7 @@ open class ContextMenu: NSObject {
     
     open func changeViewTargeted(newView: UIView, animated: Bool = true){
         DispatchQueue.main.async {
-            guard self.viewTargeted != nil else{
+            guard self.viewTargeted != nil else {
                 print("targetedView is nil")
                 return
             }
@@ -187,14 +187,14 @@ open class ContextMenu: NSObject {
     
     open func updateView(animated: Bool = true){
         DispatchQueue.main.async {
-            guard self.viewTargeted != nil else{
+            guard self.viewTargeted != nil else {
                 print("targetedView is nil")
                 return
             }
             guard self.customView.subviews.contains(self.targetedImageView) else {return}
             if !self.items.isEmpty {
                 self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
-            }else{
+            } else {
                 self.menuHeight = self.MenuConstants.MenuDefaultHeight
             }
             self.viewTargeted.alpha = 0
@@ -203,7 +203,7 @@ open class ContextMenu: NSObject {
         }
     }
     
-    open func closeMenu(){
+    open func closeMenu() {
         self.closeAllViews()
     }
     
@@ -221,7 +221,7 @@ open class ContextMenu: NSObject {
         return viewSnapShotImage
     }
     
-    func addBlurEffectView(){
+    func addBlurEffectView() {
         
         if !customView.subviews.contains(blurEffectView) {
             customView.addSubview(blurEffectView)
@@ -229,7 +229,7 @@ open class ContextMenu: NSObject {
         if MenuConstants.BlurEffectEnabled {
             blurEffectView.effect = MenuConstants.BlurEffectDefault
             blurEffectView.backgroundColor = .clear
-        }else{
+        } else {
             blurEffectView.effect = nil
             blurEffectView.backgroundColor = MenuConstants.BackgroundViewColor
         }
@@ -246,7 +246,7 @@ open class ContextMenu: NSObject {
         self.closeAllViews()
     }
     
-    func addCloseButton(){
+    func addCloseButton() {
         
         if !customView.subviews.contains(closeButton) {
             customView.addSubview(closeButton)
@@ -258,7 +258,7 @@ open class ContextMenu: NSObject {
         }
     }
     
-    func addTargetedImageView(){
+    func addTargetedImageView() {
         
         if !customView.subviews.contains(targetedImageView) {
             customView.addSubview(targetedImageView)
@@ -278,12 +278,12 @@ open class ContextMenu: NSObject {
         
     }
     
-    func addMenuView(){
+    func addMenuView() {
         
         if !customView.subviews.contains(menuView) {
             customView.addSubview(menuView)
             tableView = UITableView()
-        }else{
+        } else {
             tableView.removeFromSuperview()
             tableView = UITableView()
         }
@@ -331,7 +331,7 @@ open class ContextMenu: NSObject {
                 self.blurEffectView.alpha = 1
                 self.targetedImageView.layer.shadowOpacity = 0.2
             }
-        }else{
+        } else {
             self.blurEffectView.alpha = 1
             self.targetedImageView.layer.shadowOpacity = 0.2
         }
@@ -341,7 +341,7 @@ open class ContextMenu: NSObject {
         self.delegate?.contextMenuDidAppear(self)
     }
     
-    func closeAllViews(){
+    func closeAllViews() {
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
         DispatchQueue.main.async {
             self.targetedImageView.isUserInteractionEnabled = false
@@ -357,7 +357,7 @@ open class ContextMenu: NSObject {
                         self.removeAllViewsFromSuperView()
                     }
                 }
-            }else{
+            } else {
                 DispatchQueue.main.async {
                     self.prepareViewsForRemoveFromSuperView(with: rect)
                     self.removeAllViewsFromSuperView()
@@ -445,7 +445,7 @@ open class ContextMenu: NSObject {
             
             if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
                 zoomFactor = zoomFactorHorizontalWithMenu
-            }else{
+            } else {
                 zoomFactor = zoomFactorVerticalWithMenu
             }
             if zoomFactor > MenuConstants.MaxZoom {
@@ -456,19 +456,19 @@ open class ContextMenu: NSObject {
             if self.menuHeight > backgroundHeight {
                 self.menuHeight = backgroundHeight + MenuConstants.MenuMarginSpace
             }
-        }else{
+        } else {
             
             let zoomFactorHorizontalWithMenu = backgroundWidth/(updatedWidth)
             let zoomFactorVerticalWithMenu = backgroundHeight/(updatedHeight + self.menuHeight + MenuConstants.MenuMarginSpace)
             
             if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
                 zoomFactor = zoomFactorHorizontalWithMenu
-            }else{
+            } else {
                 zoomFactor = zoomFactorVerticalWithMenu
             }
             if zoomFactor > MenuConstants.MaxZoom {
                 zoomFactor = MenuConstants.MaxZoom
-            }else if zoomFactor < MenuConstants.MinZoom {
+            } else if zoomFactor < MenuConstants.MinZoom {
                 zoomFactor = MenuConstants.MinZoom
             }
         }
@@ -483,7 +483,7 @@ open class ContextMenu: NSObject {
         
     }
     
-    func fixTargetedImageViewExtrudings(){ // here I am checking for extruding part of ImageView
+    func fixTargetedImageViewExtrudings() { // here I am checking for extruding part of ImageView
         
         if tvY > mainViewRect.height - MenuConstants.BottomMarginSpace - tvH {
             tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
@@ -500,7 +500,7 @@ open class ContextMenu: NSObject {
         }
     }
     
-    func updateHorizontalTargetedImageViewRect(){
+    func updateHorizontalTargetedImageViewRect() {
         
         let rightClippedSpace = (tvW + MenuConstants.MenuMarginSpace + mW + tvX + MenuConstants.HorizontalMarginSpace) - mainViewRect.width
         let leftClippedSpace = -(tvX - MenuConstants.MenuMarginSpace - mW - MenuConstants.HorizontalMarginSpace)
@@ -512,15 +512,15 @@ open class ContextMenu: NSObject {
                 if (tvX + tvW/2) > mainViewRect.width/2 { //right
                     tvX = tvX + leftClippedSpace
                     mX = tvX - MenuConstants.MenuMarginSpace - mW
-                }else{ //left
+                } else { //left
                     tvX = tvX - rightClippedSpace
                     mX = tvX + MenuConstants.MenuMarginSpace + tvW
                 }
-            }else{
+            } else {
                 if (tvX + tvW/2) > mainViewRect.width/2 { //right
                     tvX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - tvW
                     mX = MenuConstants.HorizontalMarginSpace
-                }else{ //left
+                } else { //left
                     tvX = MenuConstants.HorizontalMarginSpace
                     mX = tvX + tvW + MenuConstants.MenuMarginSpace
                 }
@@ -532,7 +532,7 @@ open class ContextMenu: NSObject {
         else if leftClippedSpace > 0  {
             mX = tvX + MenuConstants.MenuMarginSpace  + tvW
         }
-        else{
+        else {
             mX = tvX + MenuConstants.MenuMarginSpace + tvW
         }
         
@@ -550,7 +550,7 @@ open class ContextMenu: NSObject {
         
     }
     
-    func updateVerticalTargetedImageViewRect(){
+    func updateVerticalTargetedImageViewRect() {
         
         let bottomClippedSpace = (tvH + MenuConstants.MenuMarginSpace + mH + tvY + MenuConstants.BottomMarginSpace) - mainViewRect.height
         let topClippedSpace = -(tvY - MenuConstants.MenuMarginSpace - mH - MenuConstants.TopMarginSpace)
@@ -564,16 +564,16 @@ open class ContextMenu: NSObject {
                 if (tvY + tvH/2) > mainViewRect.height/2 { //down
                     tvY = tvY + topClippedSpace
                     mY = tvY - MenuConstants.MenuMarginSpace - mH
-                }else{ //up
+                } else { //up
                     tvY = tvY - bottomClippedSpace
                     mY = tvY + MenuConstants.MenuMarginSpace + tvH
                 }
-            }else{
+            } else {
                 if (tvY + tvH/2) > mainViewRect.height/2 { //down
                     tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
                     mY = MenuConstants.TopMarginSpace
                     mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
-                }else{ //up
+                } else { //up
                     tvY = MenuConstants.TopMarginSpace
                     mY = tvY + tvH + MenuConstants.MenuMarginSpace
                     mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
@@ -586,13 +586,13 @@ open class ContextMenu: NSObject {
         else if topClippedSpace > 0  {
             mY = tvY + MenuConstants.MenuMarginSpace  + tvH
         }
-        else{
+        else {
             mY = tvY + MenuConstants.MenuMarginSpace + tvH
         }
         
     }
     
-    func updateTargetedImageViewRect(){
+    func updateTargetedImageViewRect() {
         
         self.mainViewRect = self.customView.frame
         
@@ -615,7 +615,7 @@ open class ContextMenu: NSObject {
         if backgroundHeight > backgroundWidth {
             self.updateVerticalTargetedImageViewRect()
         }
-        else{
+        else {
             self.updateHorizontalTargetedImageViewRect()
         }
         
@@ -640,12 +640,12 @@ open class ContextMenu: NSObject {
                 self?.updateTargetedImageViewPositionFrame()
                 
             })
-        }else{
+        } else {
             self.updateTargetedImageViewPositionFrame()
         }
     }
     
-    func updateTargetedImageViewPositionFrame(){
+    func updateTargetedImageViewPositionFrame() {
         let weakSelf = self
         
         weakSelf.menuView.alpha = 1
