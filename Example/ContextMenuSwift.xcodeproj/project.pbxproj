@@ -3,38 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0D59C979276B98930075FA82 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59C976276B98930075FA82 /* CustomCell.swift */; };
 		0D59C97A276B98930075FA82 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D59C977276B98930075FA82 /* CustomCell.xib */; };
 		0D59C97C276B9DA90075FA82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D59C97B276B9DA90075FA82 /* ViewController.swift */; };
+		0DFC0C2B2A2757F700610225 /* ContextMenuSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DFC0C2A2A2757F700610225 /* ContextMenuSwift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		ECF3F4F91A1D6AFFF781EA46 /* Pods_ContextMenuSwift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A96E225805ED721C216A11 /* Pods_ContextMenuSwift_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D59C976276B98930075FA82 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		0D59C977276B98930075FA82 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		0D59C97B276B9DA90075FA82 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2E25357A015757F2C4C056E1 /* Pods-ContextMenuSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContextMenuSwift_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ContextMenuSwift_Tests/Pods-ContextMenuSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		5313DFE50B6083C94E5B9E16 /* Pods-ContextMenuSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContextMenuSwift_Tests.release.xcconfig"; path = "Target Support Files/Pods-ContextMenuSwift_Tests/Pods-ContextMenuSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		0DFC0C282A2757DC00610225 /* ContextMenuSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ContextMenuSwift; path = ..; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ContextMenuSwift_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContextMenuSwift_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		750D1DC666ACF6A9252BCDA2 /* Pods-ContextMenuSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContextMenuSwift_Example.release.xcconfig"; path = "Target Support Files/Pods-ContextMenuSwift_Example/Pods-ContextMenuSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BA24FBF0AE1B3C4FAAE6BEC2 /* ContextMenuSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ContextMenuSwift.podspec; path = ../ContextMenuSwift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DD757130CABAA8DC6998E34C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		DF5A308A5CDAC578A693F48B /* Pods_ContextMenuSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContextMenuSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3A96E225805ED721C216A11 /* Pods_ContextMenuSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContextMenuSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FECEBE5ED6062E64020D1548 /* Pods-ContextMenuSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContextMenuSwift_Example.debug.xcconfig"; path = "Target Support Files/Pods-ContextMenuSwift_Example/Pods-ContextMenuSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,41 +37,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF3F4F91A1D6AFFF781EA46 /* Pods_ContextMenuSwift_Example.framework in Frameworks */,
+				0DFC0C2B2A2757F700610225 /* ContextMenuSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3BA603B504045A78A1E218FA /* Frameworks */ = {
+		0DFC0C272A2757DC00610225 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				F3A96E225805ED721C216A11 /* Pods_ContextMenuSwift_Example.framework */,
-				DF5A308A5CDAC578A693F48B /* Pods_ContextMenuSwift_Tests.framework */,
+				0DFC0C282A2757DC00610225 /* ContextMenuSwift */,
 			);
-			name = Frameworks;
+			name = Packages;
 			sourceTree = "<group>";
 		};
-		5D2107B1A5B708A615926139 /* Pods */ = {
+		0DFC0C292A2757F700610225 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FECEBE5ED6062E64020D1548 /* Pods-ContextMenuSwift_Example.debug.xcconfig */,
-				750D1DC666ACF6A9252BCDA2 /* Pods-ContextMenuSwift_Example.release.xcconfig */,
-				2E25357A015757F2C4C056E1 /* Pods-ContextMenuSwift_Tests.debug.xcconfig */,
-				5313DFE50B6083C94E5B9E16 /* Pods-ContextMenuSwift_Tests.release.xcconfig */,
 			);
-			path = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				0DFC0C272A2757DC00610225 /* Packages */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for ContextMenuSwift */,
 				607FACD11AFB9204008FA782 /* Products */,
-				5D2107B1A5B708A615926139 /* Pods */,
-				3BA603B504045A78A1E218FA /* Frameworks */,
+				0DFC0C292A2757F700610225 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,17 +118,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "ContextMenuSwift_Example" */;
 			buildPhases = (
-				5BC202F0661E75F5B95FDF4D /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				6F75ADBC57DFE1DA88B2A65A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ContextMenuSwift_Example;
+			packageProductDependencies = (
+				0DFC0C2A2A2757F700610225 /* ContextMenuSwift */,
+			);
 			productName = ContextMenuSwift;
 			productReference = 607FACD01AFB9204008FA782 /* ContextMenuSwift_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -192,49 +183,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5BC202F0661E75F5B95FDF4D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ContextMenuSwift_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6F75ADBC57DFE1DA88B2A65A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ContextMenuSwift_Example/Pods-ContextMenuSwift_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ContextMenuSwift/ContextMenuSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ContextMenuSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ContextMenuSwift_Example/Pods-ContextMenuSwift_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607FACCC1AFB9204008FA782 /* Sources */ = {
@@ -363,20 +311,24 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FECEBE5ED6062E64020D1548 /* Pods-ContextMenuSwift_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ContextMenuSwift/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -388,13 +340,16 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 750D1DC666ACF6A9252BCDA2 /* Pods-ContextMenuSwift_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ContextMenuSwift/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,6 +381,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DFC0C2A2A2757F700610225 /* ContextMenuSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ContextMenuSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }

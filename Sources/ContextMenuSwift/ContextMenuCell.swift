@@ -11,58 +11,47 @@ import UIKit
 open class ContextMenuCell: UITableViewCell {
     
     static let identifier = "ContextMenuCell"
-
-    @IBOutlet open weak var titleLabel: UILabel!
-    @IBOutlet open weak var iconImageView: UIImageView!
     
-    weak var contextMenu: ContextMenu?
-    weak var tableView: UITableView?
-    var item: ContextMenuItem!
-    var style : ContextMenuConstants? = nil
+    public weak var contextMenu: ContextMenu?
+    public weak var tableView: UITableView?
+    public var item: ContextMenuItem!
+    public var style : ContextMenuConstants? = nil
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        commonInit()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
     
     override open func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override open func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
-//        super.setHighlighted(highlighted, animated: animated)
+        super.setHighlighted(highlighted, animated: animated)
         
         if highlighted {
             self.contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-        }else{
+        } else{
             self.contentView.backgroundColor = .clear
         }
     }
     
-    override open func prepareForReuse() {
-        super.prepareForReuse()
-        
-        if let label = self.titleLabel {
-            label.text = nil
-        }
-        if let imgView = self.iconImageView {
-            imgView.image = nil
-        }
-        
+    open func commonInit() {
+
     }
     
     open func setup(){
-        if let label = self.titleLabel {
-            label.text = item.title
-            if let menuConstants = style {
-                label.textColor = menuConstants.LabelDefaultColor
-                label.font = menuConstants.LabelDefaultFont
-            }
-        }
-        if let imgView = self.iconImageView {
-            imgView.image = item.image
-            imgView.isHidden = (item.image == nil)
-        }
+        
     }
     
 }

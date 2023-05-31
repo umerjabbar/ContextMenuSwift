@@ -84,7 +84,7 @@ open class ContextMenu: NSObject {
     open var placeHolderView : UIView?
     open var headerView : UIView?
     open var footerView : UIView?
-    open var nibView = UINib(nibName: ContextMenuCell.identifier, bundle: Bundle(for: ContextMenuCell.self))
+    open var nibView: ContextMenuCell.Type = ContextMenuTextCell.self
     open var closeAnimation = true
     
     open var onItemTap : ((_ index: Int, _ item: ContextMenuItem) -> Bool)?
@@ -156,7 +156,7 @@ open class ContextMenu: NSObject {
             self.viewTargeted = viewTargeted
             if !self.items.isEmpty {
                 self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
-            }else{
+            } else {
                 self.menuHeight = self.MenuConstants.MenuDefaultHeight
             }
             self.addBlurEffectView()
@@ -301,7 +301,7 @@ open class ContextMenu: NSObject {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = menuView.bounds
-        tableView.register(self.nibView, forCellReuseIdentifier: "ContextMenuCell")
+        tableView.register(nibView, forCellReuseIdentifier: "ContextMenuCell")
         tableView.tableHeaderView = self.headerView
         tableView.tableFooterView = self.footerView
         tableView.clipsToBounds = true

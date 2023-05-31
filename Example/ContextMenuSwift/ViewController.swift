@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let share = ContextMenuItemWithImage(title: "Share", image: #imageLiteral(resourceName: "icons8-upload"))
         let edit = "Edit"
         let delete = ContextMenuItemWithImage(title: "Delete", image: #imageLiteral(resourceName: "icons8-trash"))
-                CM.nibView = UINib(nibName: "CustomCell", bundle: .main)
+//        CM.nibView = UINib(nibName: "CustomCell", bundle: .main)
         CM.items = [share, edit, delete]
         CM.showMenu(viewTargeted: self.cv1, delegate: self)
         let vc1 = UIView(frame: CGRect(x: 0, y: 0, width: CM.MenuConstants.MenuWidth, height: 50))

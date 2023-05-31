@@ -14,5 +14,5 @@ let package = Package(
             name: "ContextMenuSwift",
             dependencies: []
         )
-    ],
+    ]
 )

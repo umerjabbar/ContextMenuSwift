@@ -19,6 +19,7 @@ class CustomCell: ContextMenuCell {
     
     @IBAction func switchTapAction(_ sender: UISwitch) {
         self.action?(sender.isOn)
+        
         print("asd")
     }
     
