@@ -53,7 +53,14 @@ extension ContextMenuDelegate {
 
 public var CM : ContextMenu = ContextMenu()
 
-public struct ContextMenuConstants {
+public class ContextMenuConstants {
+    
+    public enum HorizontalDirection {
+        case left
+        case center
+        case right
+    }
+    
     public var MaxZoom : CGFloat = 1.1
     public var MinZoom : CGFloat = 0.8
     public var MenuDefaultHeight : CGFloat = 120
@@ -74,6 +81,7 @@ public struct ContextMenuConstants {
     public var BackgroundViewColor : UIColor = UIColor.black.withAlphaComponent(0.6)
     
     public var DismissOnItemTap : Bool = false
+    public var horizontalDirection: HorizontalDirection = .left
 }
 
 open class ContextMenu: NSObject {
@@ -84,7 +92,8 @@ open class ContextMenu: NSObject {
     open var placeHolderView : UIView?
     open var headerView : UIView?
     open var footerView : UIView?
-    open var nibView: ContextMenuCell.Type = ContextMenuTextCell.self
+    open var nibView: UINib?
+    open var cellClassView: ContextMenuCell.Type = ContextMenuTextCell.self
     open var closeAnimation = true
     
     open var onItemTap : ((_ index: Int, _ item: ContextMenuItem) -> Bool)?
@@ -301,7 +310,11 @@ open class ContextMenu: NSObject {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = menuView.bounds
-        tableView.register(nibView, forCellReuseIdentifier: "ContextMenuCell")
+        if let nibView = nibView {
+            tableView.register(nibView, forCellReuseIdentifier: "ContextMenuCell")
+        } else {
+            tableView.register(cellClassView, forCellReuseIdentifier: "ContextMenuCell")
+        }
         tableView.tableHeaderView = self.headerView
         tableView.tableFooterView = self.footerView
         tableView.clipsToBounds = true
@@ -546,8 +559,6 @@ open class ContextMenu: NSObject {
         else if (tvY + mH) > (mainViewRect.height - MenuConstants.BottomMarginSpace){
             mY = tvY - ((tvY + mH) - (mainViewRect.height - MenuConstants.BottomMarginSpace))
         }
-        
-        
     }
     
     func updateVerticalTargetedImageViewRect() {
@@ -613,6 +624,7 @@ open class ContextMenu: NSObject {
         let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
         
         if backgroundHeight > backgroundWidth {
+            self.updateHorizontalDirection()
             self.updateVerticalTargetedImageViewRect()
         }
         else {
@@ -675,6 +687,17 @@ open class ContextMenu: NSObject {
             width: weakSelf.mainViewRect.width,
             height: weakSelf.mainViewRect.height
         )
+    }
+    
+    func updateHorizontalDirection() {
+        switch MenuConstants.horizontalDirection {
+        case .left:
+            mX = MenuConstants.MenuMarginSpace
+        case .center:
+            mX = (mainViewRect.width / 2) - (mW / 2)
+        case .right:
+            mX = mainViewRect.width - MenuConstants.MenuMarginSpace - mW
+        }
     }
 }
 
