@@ -61,7 +61,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
 ### Example 4
 
-<img src="/Images/example4.jpeg" height="520" width="239" />
+<img src="/Images/example4.png" height="520" width="239" />
 
 Change the horizontal direction of menu
 
