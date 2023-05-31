@@ -363,7 +363,7 @@ open class ContextMenu: NSObject {
             
             let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
             if self.closeAnimation {
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.layoutSubviews, .curveEaseInOut, .allowUserInteraction], animations: {
                     self.prepareViewsForRemoveFromSuperView(with: rect)
                 }) { (_) in
                     DispatchQueue.main.async {
@@ -390,7 +390,7 @@ open class ContextMenu: NSObject {
             
             let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
             if animation {
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.layoutSubviews, .curveEaseInOut, .allowUserInteraction], animations: {
                     self.prepareViewsForRemoveFromSuperView(with: rect)
                 }) { (_) in
                     DispatchQueue.main.async {
@@ -641,17 +641,9 @@ open class ContextMenu: NSObject {
         self.updateTargetedImageViewRect()
         
         if animated {
-            UIView.animate(withDuration: 0.2,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 6,
-                           options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction],
-                           animations:
-                            {  [weak self] in
-                
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.layoutSubviews, .curveEaseInOut, .allowUserInteraction]) { [weak self] in
                 self?.updateTargetedImageViewPositionFrame()
-                
-            })
+            }
         } else {
             self.updateTargetedImageViewPositionFrame()
         }
