@@ -20,7 +20,7 @@ pod 'ContextMenuSwift'
 
 ### Example 1
 
-<img src="/Images/example1.gif" height="520" />
+<img src="/Images/example1.gif" height="520" width="292" />
 
 Show the menu of string values on your view
 
@@ -31,7 +31,7 @@ CM.showMenu(viewTargeted: YourView, delegate: self, animated: true)
 
 ### Example 2
 
-<img src="/Images/example2.gif" height="520" />
+<img src="/Images/example2.gif" height="520" width="292" />
 
 Update menu items async
 
@@ -46,7 +46,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
 ### Example 3
 
-<img src="/Images/example3.gif" height="520" />
+<img src="/Images/example3.gif" height="520" width="292" />
 
 Update targeted view async
 
@@ -61,7 +61,19 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
 
 ### Example 4
 
-<img src="/Images/menu_with_icons.jpeg" height="520" />
+<img src="/Images/example4.jpeg" height="520" width="239" />
+
+Change the horizontal direction of menu
+
+```swift
+CM.MenuConstants.horizontalDirection = .right
+CM.items = ["Item 1", "Item 2", "Item 3"]
+CM.showMenu(viewTargeted: YourView, delegate: self, animated: true)
+```
+
+### Example 5
+
+<img src="/Images/menu_with_icons.jpeg" height="520" width="292" />
 
 Show menu with icons
 
