@@ -61,19 +61,31 @@ public class ContextMenuConstants {
         case right
     }
     
-    public var MaxZoom : CGFloat = 1.1
-    public var MinZoom : CGFloat = 0.8
+    public var MaxZoom : CGFloat = 1.05
+    public var MinZoom : CGFloat = 0.95
     public var MenuDefaultHeight : CGFloat = 120
     public var MenuWidth : CGFloat = 250
     public var MenuMarginSpace : CGFloat = 20
-    public var TopMarginSpace : CGFloat = 40
-    public var BottomMarginSpace : CGFloat = 24
+    public var TopMarginSpace : CGFloat = 0
+    public var BottomMarginSpace : CGFloat = 0
     public var HorizontalMarginSpace : CGFloat = 20
     public var ItemDefaultHeight : CGFloat = 44
     
     public var LabelDefaultFont : UIFont = .systemFont(ofSize: 14)
-    public var LabelDefaultColor : UIColor = UIColor.black.withAlphaComponent(0.95)
-    public var ItemDefaultColor : UIColor = UIColor.white.withAlphaComponent(0.95)
+    public var LabelDefaultColor : UIColor = {
+        if #available(iOS 13.0, *) {
+            UIColor.label.withAlphaComponent(0.95)
+        } else {
+            UIColor.black.withAlphaComponent(0.95)
+        }
+    }()
+    public var ItemDefaultColor : UIColor = {
+        if #available(iOS 13.0, *) {
+            UIColor.systemBackground.withAlphaComponent(0.95)
+        } else {
+            UIColor.white.withAlphaComponent(0.95)
+        }
+    }()
     
     public var MenuCornerRadius : CGFloat = 12
     public var BlurEffectEnabled : Bool = true
@@ -130,6 +142,13 @@ open class ContextMenu: NSObject {
     private var mY : CGFloat = 0.0
     private var mX : CGFloat = 0.0
     
+    private var topMarginSpace: CGFloat {
+        customView.safeAreaInsets.top + MenuConstants.TopMarginSpace
+    }
+    private var bottomMarginSpace: CGFloat {
+        customView.safeAreaInsets.bottom + MenuConstants.BottomMarginSpace
+    }
+    
     // MARK:- Init Functions
     public init(window: UIView? = nil) {
         let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.windows.first(where: {$0.isKeyWindow})
@@ -147,7 +166,7 @@ open class ContextMenu: NSObject {
         }
     }
     
-    init(viewTargeted: UIView, window: UIView) {
+    public init(viewTargeted: UIView, window: UIView) {
         self.viewTargeted = viewTargeted
         self.customView = window
         self.mainViewRect = window.frame
@@ -302,9 +321,11 @@ open class ContextMenu: NSObject {
         menuView.backgroundColor = MenuConstants.ItemDefaultColor
         menuView.layer.cornerRadius = MenuConstants.MenuCornerRadius
         menuView.clipsToBounds = true
-        menuView.frame = CGRect(x: rect.x,
-                                y: rect.y,
-                                width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height)
+        menuView.frame = CGRect(
+            x: rect.x,
+            y: rect.y,
+            width: self.viewTargeted.frame.width, height: self.viewTargeted.frame.height
+        )
         menuView.addSubview(tableView)
         
         tableView.dataSource = self
@@ -444,7 +465,7 @@ open class ContextMenu: NSObject {
         let targetedImageFrame = viewTargeted.frame
         
         let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
-        let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+        let backgroundHeight = mainViewRect.height - topMarginSpace - bottomMarginSpace
         
         var zoomFactor = MenuConstants.MaxZoom
         
@@ -498,11 +519,11 @@ open class ContextMenu: NSObject {
     
     func fixTargetedImageViewExtrudings() { // here I am checking for extruding part of ImageView
         
-        if tvY > mainViewRect.height - MenuConstants.BottomMarginSpace - tvH {
-            tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
+        if tvY > mainViewRect.height - bottomMarginSpace - tvH {
+            tvY = mainViewRect.height - bottomMarginSpace - tvH
         }
-        else if tvY < MenuConstants.TopMarginSpace {
-            tvY = MenuConstants.TopMarginSpace
+        else if tvY < topMarginSpace {
+            tvY = topMarginSpace
         }
         
         if tvX < MenuConstants.HorizontalMarginSpace {
@@ -549,28 +570,28 @@ open class ContextMenu: NSObject {
             mX = tvX + MenuConstants.MenuMarginSpace + tvW
         }
         
-        if mH >= (mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace) {
-            mY = MenuConstants.TopMarginSpace
-            mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+        if mH >= (mainViewRect.height - topMarginSpace - bottomMarginSpace) {
+            mY = topMarginSpace
+            mH = mainViewRect.height - topMarginSpace - bottomMarginSpace
         }
-        else if (tvY + mH) <= (mainViewRect.height - MenuConstants.BottomMarginSpace) {
+        else if (tvY + mH) <= (mainViewRect.height - bottomMarginSpace) {
             mY = tvY
         }
-        else if (tvY + mH) > (mainViewRect.height - MenuConstants.BottomMarginSpace){
-            mY = tvY - ((tvY + mH) - (mainViewRect.height - MenuConstants.BottomMarginSpace))
+        else if (tvY + mH) > (mainViewRect.height - bottomMarginSpace){
+            mY = tvY - ((tvY + mH) - (mainViewRect.height - bottomMarginSpace))
         }
     }
     
     func updateVerticalTargetedImageViewRect() {
         
-        let bottomClippedSpace = (tvH + MenuConstants.MenuMarginSpace + mH + tvY + MenuConstants.BottomMarginSpace) - mainViewRect.height
-        let topClippedSpace = -(tvY - MenuConstants.MenuMarginSpace - mH - MenuConstants.TopMarginSpace)
+        let bottomClippedSpace = (tvH + MenuConstants.MenuMarginSpace + mH + tvY + bottomMarginSpace) - mainViewRect.height
+        let topClippedSpace = -(tvY - MenuConstants.MenuMarginSpace - mH - topMarginSpace)
         
         // not enought space down
         
         if topClippedSpace > 0, bottomClippedSpace > 0 {
             
-            let diffY = mainViewRect.height - (mH + MenuConstants.MenuMarginSpace + tvH + MenuConstants.TopMarginSpace + MenuConstants.BottomMarginSpace)
+            let diffY = mainViewRect.height - (mH + MenuConstants.MenuMarginSpace + tvH + topMarginSpace + bottomMarginSpace)
             if diffY > 0 {
                 if (tvY + tvH/2) > mainViewRect.height/2 { //down
                     tvY = tvY + topClippedSpace
@@ -581,13 +602,13 @@ open class ContextMenu: NSObject {
                 }
             } else {
                 if (tvY + tvH/2) > mainViewRect.height/2 { //down
-                    tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
-                    mY = MenuConstants.TopMarginSpace
-                    mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
+                    tvY = mainViewRect.height - bottomMarginSpace - tvH
+                    mY = topMarginSpace
+                    mH = mainViewRect.height - topMarginSpace - bottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
                 } else { //up
-                    tvY = MenuConstants.TopMarginSpace
+                    tvY = topMarginSpace
                     mY = tvY + tvH + MenuConstants.MenuMarginSpace
-                    mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
+                    mH = mainViewRect.height - topMarginSpace - bottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
                 }
             }
         }
@@ -621,7 +642,7 @@ open class ContextMenu: NSObject {
         self.fixTargetedImageViewExtrudings()
         
         let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
-        let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+        let backgroundHeight = mainViewRect.height - topMarginSpace - bottomMarginSpace
         
         if backgroundHeight > backgroundWidth {
             self.updateHorizontalDirection()

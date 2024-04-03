@@ -68,6 +68,7 @@ class ContextMenuTextCell: ContextMenuCell {
         if let menuConstants = style {
             titleLabel.textColor = menuConstants.LabelDefaultColor
             titleLabel.font = menuConstants.LabelDefaultFont
+            iconImageView.tintColor = menuConstants.LabelDefaultColor
         }
         iconImageView.image = item.image
         iconImageView.isHidden = (item.image == nil)
